@@ -1,13 +1,72 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    @apply font-poppins;
+    overscroll-behavior: contain;
+}
+
+.links-item {
+    @apply relative;
+    cursor: pointer;
+}
+
+.links-item::before {
+    content: "";
+    @apply w-0 h-[2px] absolute top-auto bottom-0 bg-blue-400 rounded-sm transition-all duration-500;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.links-item:hover::before {
+    @apply w-full
+}
+
+@keyframes scaleanimation {
+    from {
+        transform: scale(0.9) translateY(-100%);
+    }
+    to {
+        transform: scale(1, 1) translateY(0%);
+    }
+}
+
+@media screen and (max-width:767px) {
+    .links-item::before {
+        @apply left-0 translate-x-0 bottom-[-2px];
+    }
+    @keyframes scaleanimation {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: scale(1, 1) translateX(0%);
+        }
+    }
+}
+
+.transiton-bg-color {
+    /* @apply transition; */
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.transition-bg:hover {
+    @apply bg-slate-300;
+    transition: background-color 0.4s ease;
+}
+
+.scale-navigate {
+    @apply scale-0;
+}
+
+.scale-navigate.active {
+    @apply scale-100
 }
