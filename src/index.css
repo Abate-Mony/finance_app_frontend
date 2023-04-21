@@ -1,11 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-margin: 50px 0px;
+    scroll-padding-top: 50px;
 }
 
 body {
@@ -16,6 +22,7 @@ body {
 .links-item {
     @apply relative;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .links-item::before {
@@ -26,7 +33,7 @@ body {
 }
 
 .links-item:hover::before {
-    @apply w-full
+    @apply w-full;
 }
 
 @keyframes scaleanimation {
@@ -38,7 +45,7 @@ body {
     }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
     .links-item::before {
         @apply left-0 translate-x-0 bottom-[-2px];
     }
@@ -68,5 +75,77 @@ body {
 }
 
 .scale-navigate.active {
-    @apply scale-100
+    @apply scale-100;
+}
+
+.slide::before,
+.slide::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    @apply bg-red-500 bg-opacity-20;
+}
+
+.slide::after {
+    @apply right-[-40%] rotate-[30deg] bottom-[-30%];
+    animation: moveright 2s infinite;
+    animation-direction: alternate;
+}
+
+.slide::before {
+    @apply left-[-40%] rotate-[30deg] top-[-30%];
+    animation: moveleft 3s infinite;
+    animation-delay: 1.2s;
+    animation-direction: alternate;
+}
+
+.slide {
+    cursor: grab;
+}
+
+@keyframes moveright {
+    to {
+        @apply right-[-45%];
+    }
+}
+
+@keyframes moveleft {
+    to {
+        @apply left-[-45%];
+    }
+}
+
+.testimonial {
+    @apply transition-all translate-y-10 opacity-0 duration-700
+}
+
+.testimonial.active {
+    @apply opacity-100 translate-y-0
+}
+
+.cal-width {
+    --w: 400px;
+    width: min(var(--w), calc(100vw - 30px));
+}
+
+.scale-info {
+    animation: scaleanimation 0.4s;
+}
+
+.swiper-scrollbar::-webkit-scrollbar {
+    width: 30px;
+    height: 40px !important;
+}
+
+.swiper-scrollbar::-webkit-scrollbar-thumb {
+    @apply border-slate-400 bg-slate-600 border-[3px] rounded-[20px];
+}
+
+.swiper-scrollbar:hover::-webkit-scrollbar-thumb {
+    @apply bg-slate-400;
+}
+
+.swiper-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
 }

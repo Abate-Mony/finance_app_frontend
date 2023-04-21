@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isLogin, setIslogin] = useState(true)
     const navigate = useNavigate()
     const gotoLoginPage = () => {
-        navigate("/login")
+        // navigate("/login")
         setIsOpen(false)
 
     }
@@ -50,7 +50,7 @@ const Navbar = () => {
 
                 </div>
                 <ul className="hidden flex-col md:flex-row  md:flex items-center">
-                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>Our Service</li>
+                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'><a href="#our-services">Our Service</a></li>
                     <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>About Us</li>
                     <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>Contact Us</li>
 
@@ -58,14 +58,14 @@ const Navbar = () => {
                 <ul className={`${!isOpen ? " max-h-0" :
                     " max-h-screen"} overflow-hidden transition-[max-height] duration-500  shadow
                     md:hidden absolute top-[60px] left-0 bg-color_light  dark:bg-color_dark dark:text-white  w-full `}>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>Our Service</li>
-                    <li className='links-item border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>About Us</li>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>Contact Us</li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={gotoLoginPage}><a href="#our-services">Our Service</a></li>
+                    <li className='links-item border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={gotoLoginPage}>About Us</li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={gotoLoginPage}>Contact Us</li>
                 </ul>
                 <div className='hidden md:flex gap-3 items-center'>
-                    <div className='hover:bg-slate-300  w-[50px] h-[50px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
+                    <div className='hover:bg-slate-300  w-[40px] h-[40px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
                         {
-                            darkTheme ? <BsMoonStars size={20} /> : <BsSun size={25} />
+                            darkTheme ? <BsMoonStars size={20} /> : <BsSun size={20} />
                         }
                     </div>
                     <div className='hover:bg-slate-300 
@@ -85,12 +85,12 @@ const Navbar = () => {
                     <GrNotification size={20}/>
                     <div className="absolute top-[6px] right-[9px] h-[10px] w-[10px] rounded-full bg-red-600 "></div>
                     </div>
-                    <div className='hover:bg-slate-300  w-[50px] h-[50px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
+                    <div className='hover:bg-slate-300  w-[40px] h-[40px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
                         {
                             darkTheme ? <BsMoonStars size={25} /> : <BsSun size={25} />
                         }
                     </div>
-                    <div className="md:hidden h-[50px] w-[50px] rounded-full flex items-center justify-center hover:bg-slate-300" onClick={toggleNavBar}>
+                    <div className="md:hidden h-[40px] w-[40px] rounded-full flex items-center justify-center hover:bg-slate-300" onClick={toggleNavBar}>
 
                         {
                             !isOpen ? <AiOutlineMenu size={20} /> : <IoMdClose size={27} />
