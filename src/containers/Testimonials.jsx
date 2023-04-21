@@ -36,7 +36,7 @@ const Testimonials = () => {
 
     return (
 
-        <section class="text-neutral-700 dark:text-neutral-300 container px-4  py-10 md:px-2 mx-auto mb-20" ref={testimonials}>
+        <section class="text-neutral-700 dark:text-neutral-300 bg-color_white dark:bg-color_black container px-4  py-10 md:px-2 mx-auto mb-20" ref={testimonials}>
             <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
                 <h3 class="mb-6 text-3xl font-bold">Testimonials</h3>
                 <p class="mb-6 pb-2 md:mb-12 md:pb-0">

@@ -4,7 +4,7 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import 'swiper/css';
 const Hero = () => {
   return (
-    <div className="  container mx-auto ">
+    <div className="  container mx-auto bg-color_white dark:bg-color_black ">
         <div className="flex">
           <Swiper className='' spaceBetween={1} slidesPerView={1.02} onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}

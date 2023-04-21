@@ -36,6 +36,10 @@ body {
     @apply w-full;
 }
 
+.btn {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 @keyframes scaleanimation {
     from {
         transform: scale(0.9) translateY(-100%);
@@ -104,6 +108,22 @@ body {
     cursor: grab;
 }
 
+.scale-animate {
+    animation: scale 2s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes scale {
+    from {
+        scale: 0.8;
+        @apply shadow-xl
+    }
+    to {
+        scale: 1;
+        @apply shadow-2xl
+    }
+}
+
 @keyframes moveright {
     to {
         @apply right-[-45%];
@@ -134,8 +154,8 @@ body {
 }
 
 .swiper-scrollbar::-webkit-scrollbar {
-    width: 30px;
-    height: 40px !important;
+    width: 12px;
+    height: 12px !important;
 }
 
 .swiper-scrollbar::-webkit-scrollbar-thumb {
@@ -148,4 +168,12 @@ body {
 
 .swiper-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-slate-600;
+}
+
+.cal-width {
+    width: min(300px, calc(100vw - 20px));
+}
+
+.chat-height {
+    height: calc(100vh - 200px);
 }

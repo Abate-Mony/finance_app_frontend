@@ -11,7 +11,9 @@ module.exports = {
             },
             backgroundColor: {
                 color_dark: "#2e2e2e",
-                color_light: "#f8f8f8"
+                color_light: "#f8f8f8",
+                color_black: "#141414",
+                color_white: "#fff",
 
             }
         },
