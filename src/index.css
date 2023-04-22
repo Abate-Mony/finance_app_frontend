@@ -9,7 +9,6 @@
 }
 
 html {
-    scroll-behavior: smooth;
     scroll-margin: 50px 0px;
     scroll-padding-top: 50px;
 }
@@ -17,6 +16,10 @@ html {
 body {
     @apply font-poppins;
     overscroll-behavior: contain;
+}
+
+.home__wrapper {
+    scroll-behavior: smooth;
 }
 
 .links-item {
@@ -49,7 +52,15 @@ body {
     }
 }
 
+
+/* .service-links .swiper-scrollbar-drag {
+  height: 0 !important;
+} */
+
 @media screen and (max-width: 767px) {
+    .service-links .swiper-scrollbar-drag {
+        height: 12 !important;
+    }
     .links-item::before {
         @apply left-0 translate-x-0 bottom-[-2px];
     }
@@ -115,11 +126,11 @@ body {
 
 @keyframes scale {
     from {
-        scale: 0.8;
+        scale: 0.6;
         @apply shadow-xl;
     }
     to {
-        scale: 1;
+        scale: 0.8;
         @apply shadow-2xl;
     }
 }
@@ -204,3 +215,20 @@ body {
     opacity: 1;
     transform: translateY(0px);
 }
+
+.service-links .swiper-scrollbar {
+    background-color: transparent !important;
+}
+
+
+/* .service-links .swiper {
+    @apply bg-slate-50 flex items-center
+} */
+
+
+/* .swiper-horizontal>.swiper-scrollbar::-webkit-scrollbar-track,
+.swiper-scrollbar.swiper-scrollbar-horizontal::-webkit-scrollbar-track {
+    background-color: white !important; */
+
+
+/* } */

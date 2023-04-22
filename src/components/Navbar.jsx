@@ -8,7 +8,7 @@ const Navbar = () => {
     const [isLogin, setIslogin] = useState(true)
     const navigate = useNavigate()
     const gotoLoginPage = () => {
-        // navigate("/login")
+        navigate("/")
         setIsOpen(false)
 
     }

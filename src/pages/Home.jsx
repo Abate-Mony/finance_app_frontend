@@ -3,10 +3,10 @@ import Cookies from "../components/cookies"
 import { Advert, ChatBox, Footer, Hero, OurServices, Testimonials } from "../containers"
 const Home = () => {
   return (
-    <div>
+    <div className="home__wrapper h-screen overflow-y-auto">
+      
     {/* <Cookies/> */}
-      <ChatBtn />
-      <ChatBox />
+  
       <Hero />
       {/* <Test /> */}
       <Advert />

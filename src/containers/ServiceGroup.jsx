@@ -12,18 +12,25 @@ import "swiper/css/scrollbar"
 import "./styles.css";
 
 // import required modules
+
+import {motion,varaint} from 'framer-motion'
 import { FreeMode, Navigation, Pagination, Scrollbar, A11y, Autoplay, Thumbs } from "swiper";
 import { menulist } from "../Assests/listitems";
 export default function App() {
+    const animateOpacity = {
+
+        offscreen: { opacity: 0, x: 50 },
+        onscreen: { opacity: 1, y: 0, x:0 },duration:2
+    
+    }
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const navigate = useNavigate()
     const gotoservicepage = (service ="education") => {
         navigate(`/service/${service}`)
-
     }
     return (
         <>
-            <div className="relative px-[35px] min-h-[50px] flex items-center overflow-auto">
+            <div className="relative service-links px-[35px] min-h-[50px] flex items-center overflow-auto">
                 <div className="absolute disabled:bg-green-300 btn z-10 swiper-button-pre top-[7px] hover:bg-slate-200 w-[30px] h-[30px] shadow-2xl flex items-center justify-center  left-0 rounded-full">
 
                     <BsChevronLeft size={30} />
@@ -155,7 +162,13 @@ export default function App() {
                                             </div>
                                         </li>
                                     </ol>
-                                    <button onClick={()=>gotoservicepage("education")}
+                                    <motion.button      
+                                    variants={animateOpacity}
+                                    initial={"offscreen"}
+                                    whileInView={"onscreen"}
+                        
+                                    
+                                    onClick={()=>gotoservicepage("education")}
                                         type="button"
                                         a data-te-ripple-init
                                         data-te-ripple-color="light"
@@ -169,7 +182,7 @@ active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,
 dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                                     >
                                         Appy for Service
-                                    </button>
+                                    </motion.button>
                                 </div>
 
                             </div>

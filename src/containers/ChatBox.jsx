@@ -1,16 +1,19 @@
 import { IoIosAttach, IoMdSend } from "react-icons/io"
 import { Recieve, Send } from "../components"
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
-
+import { useState, useRef } from "react"
+import { sendAudio } from "../Assests/audio"
+import { motion } from "framer-motion"
 const ChatBox = () => {
     const [text, setText] = useState("")
     const [arr, setArr] = useState([])
-
+    const scrollRef = useRef(null)
     const handleSend = () => {
         if (!text.length) return
+        const audio = new Audio(sendAudio)
         setArr([...arr, text])
         setText("")
+        audio.play()
 
     }
 
@@ -22,13 +25,19 @@ const ChatBox = () => {
         <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
 
             <div onClick={e => e.stopPropagation()} className={` chat-sm-container cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
-                <div className=" py-5 overflow-auto swiper-scrollbar" style={{
-                    height: "calc(100% - 50px)"
-                }}>
+                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar" style={{
+                    height: "calc(100% - 50px)" 
+                }} ref={scrollRef}>
 
                     {
+                        arr.length < 1 ? <div className="h-full w-full flex flex-col items-center justify-center">
 
-                        arr.map((arr, i) => <> <Send message={arr} />  <Recieve message={"thank for message us we get back to  you"} /> </>)
+                            <p className="text-lg font-manrope uppercase">no new messages</p>
+                            <p className="text-xl font-manrope uppercase">say Hi</p>
+
+                        </div> :
+
+                            arr.map((arr, i) => <> <Send message={arr} _ref={scrollRef}/>  <Recieve _ref={scrollRef} message={"thank for messaging us we get back to  you! "} /> </>)
                     }
 
 
@@ -40,14 +49,17 @@ const ChatBox = () => {
          py-1 z-40">
 
                     <div className="input-container  focus:shadow-2xl h-[40px] " style={{ flex: 1 }}>
-                        <input type="text" name="text" id="text" placeholder='Message '  value={text} onChange={e => {
-                        if(e.key=="EnterKey"){
-                        handleSend()
-                        }
-                        setText(e.target.value)
-                        
-                        
+                        <input type="text" name="text" id="text" placeholder='Message ' value={text} onChange={e => {
+
+                            setText(e.target.value)
+
+
                         }}
+                            onKeyUp={e => {
+                                if (e.keyCode === 13) {
+                                    handleSend()
+                                }
+                            }}
                             className='h-full pl-[1rem] w-full bg-transparent border-0 focus:border-none focus:outline-none focus:shadow-lg' />
                     </div>
 
