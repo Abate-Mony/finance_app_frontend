@@ -5,8 +5,6 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 const Testimonials = () => {
     const testimonials = useRef(null)
     useEffect(() => {
-        var counter = 0
-
         const children = [...testimonials.current.querySelectorAll(".testimonial")]
         window.addEventListener("scroll", function () {
             children.forEach((testimonial) => {

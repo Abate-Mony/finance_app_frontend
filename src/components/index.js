@@ -6,3 +6,5 @@ export { default as Send }
 from "./Send"
 export { default as Recieve }
 from "./Recieve"
+export { default as cookies }
+from "./cookies"

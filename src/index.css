@@ -116,11 +116,11 @@ body {
 @keyframes scale {
     from {
         scale: 0.8;
-        @apply shadow-xl
+        @apply shadow-xl;
     }
     to {
         scale: 1;
-        @apply shadow-2xl
+        @apply shadow-2xl;
     }
 }
 
@@ -137,11 +137,11 @@ body {
 }
 
 .testimonial {
-    @apply transition-all translate-y-10 opacity-0 duration-700
+    @apply transition-all translate-y-10 opacity-0 duration-700;
 }
 
 .testimonial.active {
-    @apply opacity-100 translate-y-0
+    @apply opacity-100 translate-y-0;
 }
 
 .cal-width {
@@ -176,4 +176,31 @@ body {
 
 .chat-height {
     height: calc(100vh - 200px);
+}
+
+.swiper-button-nxt.swiper-button-disabled,
+.swiper-button-pre.swiper-button-disabled {
+    opacity: 0 !important;
+    transform: opacity 0.4s ease;
+    cursor: not-allowed;
+}
+
+.chat-container {
+    visibility: hidden;
+    transition: visibility 0.3s ease;
+}
+
+.chat-container.active {
+    visibility: visible;
+}
+
+.chat-sm-container {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.chat-container.active .chat-sm-container {
+    opacity: 1;
+    transform: translateY(0px);
 }

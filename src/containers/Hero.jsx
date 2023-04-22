@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+// import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import 'swiper/css';
 const Hero = () => {
   return (
