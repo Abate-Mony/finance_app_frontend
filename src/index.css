@@ -2,10 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+:root {
+    --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%, #f49345);
+    --gradient-bar: linear-gradient(103.97deg, #AE67FA -13.86%, #f49345);
+    --color-bg: #040C18;
+    --color-footer: #031B34;
+    --color-blog: #042c54;
+    --color-text: #B1AFFD;
+    --color-subtext: #FFBA71;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.gradient__text {
+    background: var(--gradient-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 html {
@@ -52,10 +69,9 @@ body {
     }
 }
 
-
-/* .service-links .swiper-scrollbar-drag {
-  height: 0 !important;
-} */
+.service-links .swiper-scrollbar-drag {
+    height: 0 !important;
+}
 
 @media screen and (max-width: 767px) {
     .service-links .swiper-scrollbar-drag {

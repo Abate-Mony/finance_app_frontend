@@ -3,22 +3,37 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
 // import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 // import { motion } from "framer-motion"
-import { motion, varaint } from 'framer-motion'
+import { motion } from 'framer-motion'
 const Testimonials = () => {
     const testimonials = useRef(null)
     const animateOpacity = {
-
         offscreen: { opacity: 0, y: 100, x: -30 },
-        onscreen: { opacity: 1, y: 0, x: 0 },duration:2
-
+        onscreen: { opacity: 1, y: 0, x: 0 }
+    }
+    const slide = {
+        offscreen: { opacity: 0, x: -300
+        },
+        onscreen: { opacity: 1, x: 0 }
     }
 
 
     return (
 
-        <section class="text-neutral-700 dark:text-neutral-300 bg-color_white dark:bg-color_black container px-4  py-10 md:px-2 mx-auto mb-20" ref={testimonials}>
+        <section class="text-neutral-700 dark:text-neutral-300 bg-color_white dark:bg-color_black container px-4  py-10 md:px-10 z-1 mx-auto max-w-6xl -mt-[30px] mb-20 " ref={testimonials}>
             <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl">
-                <h3 class="mb-6 text-3xl font-bold">Testimonials</h3>
+                <motion.h3
+                 variants={slide}
+                 initial={"offscreen"}
+                 whileInView={"onscreen"}
+                 viewport={{once:true}}
+                 
+                
+                 transition={
+                    { staggerChildren: 0.6 ,duration:0.6}}
+                
+                class="mb-2 text-2xl font-bold gradient__text">Whats others are saying</motion.h3>
+            <span className="h-[5px] w-[100px] bg-red-400 block mb-6 mx-auto rounded-lg "></span>
+                
                 <p class="mb-6 pb-2 md:mb-12 md:pb-0">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
                     error amet numquam iure provident voluptate esse quasi, veritatis
@@ -29,10 +44,10 @@ const Testimonials = () => {
                 variants={animateOpacity}
                 initial={"offscreen"}
                 whileInView={"onscreen"}
-                // viewport={{once:false,amount:1}}
+                viewport={{amount:0.2}}
                 
                 transition={
-                    { staggerChildren: 0.6 }}
+                    { staggerChildren: 0.6 ,duration:0.2}}
             >
                 <Swiper className='' spaceBetween={2.2} slidesPerView={1} onSlideChange={() => console.log("slide change")}
                     onSwiper={(swiper) => console.log(swiper)}

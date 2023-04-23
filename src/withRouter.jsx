@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-function ScrollTop({ history }) {
+function ScrollTop() {
     const { pathname } = useLocation()
 
     useEffect(() => {

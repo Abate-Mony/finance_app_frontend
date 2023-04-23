@@ -1,5 +1,5 @@
 import { ChatBtn, Navbar } from "./components";
-import { Home, ApplyService } from "./pages";
+import { Home, ApplyService ,ContactUs} from "./pages";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import { store } from "./store/appstore";
 import { Provider } from 'react-redux'
@@ -19,6 +19,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/service/:service_id" element={<ApplyService />} />
+            <Route path="/contact-us" element={<ContactUs />} />
             
           </Routes>
         </Provider>
