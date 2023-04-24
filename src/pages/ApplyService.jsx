@@ -1,27 +1,30 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from "react"
-
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+import { CiCalendarDate, CiTimer } from 'react-icons/ci'
 const CheckOut = () => {
     const navigate = useNavigate()
     //   const gotoInfo = () => navigate("/information");
     const [selected, setSelected] = useState(true)
     const { service_id } = useParams()
 
+    const [startDate, setStartDate] = useState(new Date());
     return (
 
         <div className='flex container mx-auto  overflow-y-hidden'>
 
-            <div className="hidden lg:block mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
+            <div className="hidden lg:block mb-[100px] md:mb-0 md:w-8/12 lg:w-6/12">
                 <img
                     src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                     className="w-full"
                     alt="Phone image" />
             </div>
-            <div className="md:w-8/12  lg:w-5/12 pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4">
+            <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4">
 
                 <div className="flex-1">
 
-                    <div className="bg-blue-400 flex py-4 shadow-lg  rounded-md  gap-4 ">
+                    <div className="bg-blue-400 bg-opacity-75 flex py-4 shadow-lg  rounded-md  gap-4 ">
                         <div className="flex-none"></div>
                         <div className="flex-1">
                             <h1 className="text-lg md:text-xl text-center md:text-start">service for  {service_id}</h1>
@@ -30,14 +33,53 @@ const CheckOut = () => {
                         <div className="flex-none"></div>
 
                     </div>
-                    <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3]">Select  Date</h1>
-                    <div className="min-h-[300px] max-h-screen bg-orange-400  rounded-lg "></div>
-                    <h1 className="font-[500] text-lg md:text-xl mt-8 leading-[3]">Select  Date</h1>
+                    <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex items-center gap-2 uppercase"><span>Select date</span> <CiTimer size={25} /> </h1>
+
+
+                    <div className="flex flex-nowrap flex-row flex-1 max-h-screen   rounded-lg ">
+                        <DatePicker className='w-full'
+                            fixedHeight
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            inline
+                        />
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <h1 className="font-[500] text-lg md:text-xl mt-8 leading-[3] flex  gap-2 items-center uppercase"><span>Select Time </span> <CiCalendarDate size={25} /></h1>
                     <div className="flex flex-wrap">
 
                         {
-                            Array.from({ length: 6 }, (arr, i) => (<div key={i} className="w-1/3  px-4 py-2">
-                                <div className={`shadow rounded-lg px-4 py-2 ${selected === i ? "bg-blue-300" : ""}`} onClick={() => setSelected(i)}> 9:00 am</div>
+                            Array.from({ length: 6 }, (arr, i) => (<div key={i} className="w-1/3  flex justify-center px-4 py-2">
+
+                                <button type="button" class={` text-xs mx-auto transition-colors duration-500 ${selected === i ? "bg-blue-800 scale-[1.2] text-white shadow-2xl " : "text-blue-700"}
+                                hover:text-white border border-blue-700
+                                hover:bg-blue-800
+                                focus:ring-4 
+                                focus:outline-none
+                                focus:ring-blue-300 font-medium rounded-lg
+                                px-5 py-2.5 text-center 
+                                dark:border-blue-500 dark:text-blue-500
+                                dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800`}
+
+                                    onClick={() => {
+                                        setSelected(i)
+                                        window.navigator.vibrate([50])
+                                    }}
+
+                                >
+                                    12:0 am
+
+                                </button>
+
                             </div>))
                         }
 
@@ -45,10 +87,10 @@ const CheckOut = () => {
 
 
 
-                  
+
 
                 </div>
-                <form  className='px-4 py-5 shadow-md'>
+                <form className='px-4 py-5 shadow-md'>
 
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
@@ -320,6 +362,10 @@ const CheckOut = () => {
                             </label>
                         </div>
                     </div>
+
+                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+
                     <button
                         type="submit"
                         a data-te-ripple-init
@@ -355,8 +401,14 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                         </button>
 
                     </div>
-                </form>
 
+                </form>
+                <h1 className="text-2xl uppercase text-center gradient__text mt-10 mb-4">{service_id} </h1>
+                <p className="text-xl  ">Our service for <span className="gradient__text"> {service_id}</span> is design to make the best out of the best in a way the user
+                    ake your financial ability to the next level with our coaching advice and ideas for a better tomorrow
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore eaque, quidem qui dolore aut omnis distinctio, numquam velit pariatur quam vitae eos officia iusto, perspiciatis recusandae
+
+                </p>
             </div>
 
         </div>

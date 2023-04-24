@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
+import React, {  useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs"
 import { useNavigate } from "react-router-dom";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -11,9 +9,8 @@ import "swiper/css/thumbs";
 import "swiper/css/scrollbar"
 import "./styles.css";
 
-// import required modules
 
-import {motion,varaint} from 'framer-motion'
+import {motion} from 'framer-motion'
 import { FreeMode, Navigation, Pagination, Scrollbar, A11y, Autoplay, Thumbs } from "swiper";
 import { menulist } from "../Assests/listitems";
 export default function App() {
@@ -108,7 +105,7 @@ export default function App() {
                             </div>
                             <div className="flex-1 px-2 my-5 md:mt-0">
                                 <div className="text-xl">
-                                    <span className="text-orange-400"> Our Services </span>
+                                    <span className="text-orange-400"> {item} Services </span>
                                     are  design to accomdate a variaty of individuals  and business all around the world
                                     <ol class="border-l text-sm border-neutral-300 dark:border-neutral-500">
                                         <li>
@@ -168,7 +165,7 @@ export default function App() {
                                     whileInView={"onscreen"}
                         
                                     
-                                    onClick={()=>gotoservicepage("education")}
+                                    onClick={()=>gotoservicepage(item)}
                                         type="button"
                                         a data-te-ripple-init
                                         data-te-ripple-color="light"

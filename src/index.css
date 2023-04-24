@@ -239,3 +239,11 @@ body {
 .service-links .swiper-scrollbar {
     background-color: transparent !important;
 }
+
+.react-datepicker__input-container {
+    width: inherit;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
