@@ -1,5 +1,5 @@
 import { UserLayout, DashBoardLayout } from "./components";
-import { Home, ApplyService, ContactUs, Login, Main, Messages, Info } from "./pages";
+import { Home, ApplyService, ContactUs, Login, Main, Messages, Services,MessageBox } from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { store } from "./store/appstore";
 import { Provider } from 'react-redux'
@@ -21,6 +21,8 @@ function App() {
             <Route path="dashboard" element={<DashBoardLayout />}>
               <Route index element={<Main />} />
               <Route path="messages" element={<Messages />} />
+              <Route path="messages/:id" element={<MessageBox />} />
+              <Route path="services" element={<Services />} />
             </Route>
             <Route path="auth" element={<Login />} />
 
@@ -28,7 +30,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="service/:service_id" element={<ApplyService />} />
               <Route path="contact-us" element={<ContactUs />} />
-              <Route path="information" element={<Info />} />
+              {/* <Route path="information" element={<Info />} /> */}
             </Route>
 
           </Routes>

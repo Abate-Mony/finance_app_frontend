@@ -160,12 +160,10 @@ dark:border-gray-600 dark:text-white`}>
                         }
                     </div>
                     <div className="md:hidden h-[40px] w-[40px] rounded-full flex items-center justify-center hover:bg-slate-300" onClick={toggleNavBar}>
-
                         {
                             !isOpen ? <AiOutlineMenu size={20} /> : <IoMdClose size={27} />
 
                         }
-
                     </div>
                 </div>
 

@@ -14,3 +14,5 @@ export { default as DashBoardLayout }
 from "./DashBoardLayout"
 export { default as SideBar }
 from "./SideBar"
+export { default as Chat }
+from "./Chat"

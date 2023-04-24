@@ -1,11 +1,10 @@
 import {  IoMdSend } from "react-icons/io"
 import { Recieve, Send } from "../components"
-import { useDispatch, useSelector } from "react-redux"
 import { useState, useRef } from "react"
 import { sendAudio } from "../Assests/audio"
 const ChatBox = () => {
     const [text, setText] = useState("")
-    const [arr, setArr] = useState([])
+    const [arr, setArr] = useState(["jjo"])
     const scrollRef = useRef(null)
     const handleSend = () => {
         if (!text.length) return
@@ -16,17 +15,11 @@ const ChatBox = () => {
 
     }
 
-    const isOpen = useSelector(state => state.openChat)
-    const dispatch = useDispatch()
-
-    const toggleChat = () => dispatch({ type: 'openChat' })
     return (
-        <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
+        <div className={`  w-full  bg-slate-400 h-[calc(100%-60px)] overflow-y-auto relative z-20 bg-opacity-5 `} >
 
-            <div onClick={e => e.stopPropagation()} className={` chat-sm-container cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
-                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar" style={{
-                    height: "calc(100% - 50px)" 
-                }} ref={scrollRef}>
+            <div onClick={e => e.stopPropagation()} className={` bg-white `}>
+                <div className=" swiper-scrollbar-" ref={scrollRef}>
 
                     {
                         arr.length < 1 ? <div className="h-full w-full flex flex-col items-center justify-center">
@@ -41,7 +34,7 @@ const ChatBox = () => {
 
 
                 </div>
-                <div className="h-[50px] bottom-0 w-full shadow-2xl bg-white dark:bg-slate-600 left-0  
+                <div className="h-[50px]  absolute bottom-0 w-full shadow-2xl bg-white dark:bg-slate-600 left-0  
             flex items-center justify-center px-4
             gap-2 min-h-[50px]
             

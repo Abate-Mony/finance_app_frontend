@@ -12,3 +12,9 @@ export { default as Messages }
 from './Messages'
 export { default as Info }
 from './Info'
+export { default as Services }
+from './Services'
+export { default as MessageBox }
+from './MessageBox'
+export { default as ChatBox }
+from './ChatBox'
