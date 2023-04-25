@@ -89,7 +89,7 @@ const Appointment = () => {
 
                             Array.from({ length: 100 }, (arr, index) => (<tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
 
-                                onClick={() => navigate(`/dashboard/appointment/${index}`)}
+                               
                             >
                                 <td className="px-2 py-4 border flex items-center justify-center">
                                     {index + 1}
@@ -101,15 +101,18 @@ const Appointment = () => {
                                     Ako bate Emmanuel
                                 </th>
                                 <td className="px-6 py-4">
-                                    672301714
+                                <a href={`https://wa.me/237672301714`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">672301714</a>
+                                  
                                 </td>
                                 <td className="px-6 py-4">
-                                    bateema14@gmail.com
+                                <a href={`mailto:bateemma14@gmail.com`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">bateema14@gmail.com</a>
+                                
+                                    
                                 </td>
                                 <td className="px-6 py-4">
                                     35
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4"  onClick={() => navigate(`/dashboard/appointment/${index}`)}>
                                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                 </td>
                             </tr>
