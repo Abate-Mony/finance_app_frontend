@@ -18,3 +18,7 @@ export { default as MessageBox }
 from './MessageBox'
 export { default as ChatBox }
 from './ChatBox'
+export { default as Appointment }
+from './Appointment'
+export { default as AppointmentSingle }
+from './AppointmentSingle'

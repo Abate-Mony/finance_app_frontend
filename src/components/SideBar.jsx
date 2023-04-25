@@ -21,13 +21,22 @@ const SideBar = () => {
   const [active, setActive] = useState(0);
   const navigate = useNavigate()
   const navLinks = [
+    // {
+
+    //   name: "Home",
+    //   icon: <RxDashboard size={25} />
+    //   , to: "/dashboard"
+
+    // },
     {
 
       name: "Home",
+      // icon: <GiNetworkBars size={25} />
       icon: <RxDashboard size={25} />
       , to: "/dashboard"
 
     },
+
     {
 
       name: "Messages",
@@ -35,20 +44,13 @@ const SideBar = () => {
 
       , to: "messages"
     },
-    {
+    // {
 
-      name: "Users",
-      icon: <BsPeople size={25} />
-      , to: "users"
+    //   name: "Users",
+    //   icon: <BsPeople size={25} />
+    //   , to: "users"
 
-    },
-    {
-
-      name: "Appoints",
-      icon: <GiNetworkBars size={25} />
-      , to: "appoints"
-
-    },
+    // },
     {
 
       name: "Services",
