@@ -1,8 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { CiCalendarDate, CiTimer } from 'react-icons/ci'
+// import {listItems} from '../'
+import { menulist } from "../Assests/listitems";
+
 const CheckOut = () => {
     const navigate = useNavigate()
     //   const gotoInfo = () => navigate("/information");
@@ -10,6 +13,14 @@ const CheckOut = () => {
     const { service_id } = useParams()
 
     const [startDate, setStartDate] = useState(new Date());
+    const [update, setUpdate] = useState(0)
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "auto"
+        })
+
+    }, [update])
     return (
 
         <div className='flex container mx-auto  overflow-y-hidden'>
@@ -409,7 +420,21 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore eaque, quidem qui dolore aut omnis distinctio, numquam velit pariatur quam vitae eos officia iusto, perspiciatis recusandae
 
                 </p>
+
+                <h1 className="text-lg md:text-xl text-center md:text-start uppercase mb-4 gradient__text">related services</h1>
+                {
+
+
+                    menulist.slice(3).sort(() => 0.5 - Math.random()).map((item, index) => item !== service_id ? (<div
+
+                        onClick={() => {
+
+                            setUpdate(Math.random())
+                        }}
+                        className="bg-orange-300 px-5 w-fit mb-2 inline-block mx-4 rounded-md" key={index}>{item} </div>) : "")
+                }
             </div>
+            <div className="mb-[200px]" />
 
         </div>
     )

@@ -2,8 +2,6 @@ import { IoMdClose } from "react-icons/io"
 import { RxDashboard } from "react-icons/rx"
 import { TiMessages } from "react-icons/ti"
 import { BsPeople } from "react-icons/bs"
-import { GiNetworkBars } from "react-icons/gi"
-import { CiLogout } from "react-icons/ci"
 import { GrServicePlay } from "react-icons/gr"
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
@@ -21,17 +19,10 @@ const SideBar = () => {
   const [active, setActive] = useState(0);
   const navigate = useNavigate()
   const navLinks = [
-    // {
-
-    //   name: "Home",
-    //   icon: <RxDashboard size={25} />
-    //   , to: "/dashboard"
-
-    // },
+    
     {
 
       name: "Home",
-      // icon: <GiNetworkBars size={25} />
       icon: <RxDashboard size={25} />
       , to: "/dashboard"
 
@@ -44,13 +35,7 @@ const SideBar = () => {
 
       , to: "messages"
     },
-    // {
-
-    //   name: "Users",
-    //   icon: <BsPeople size={25} />
-    //   , to: "users"
-
-    // },
+    
     {
 
       name: "Services",
@@ -99,12 +84,7 @@ const SideBar = () => {
         </NavLink>))
 
       }
-      {/*  */} <div
-        onClick={() => navigate("/auth")}
-        className="flex   py-2 px-8 text-white hover:bg-orange-800 absolute bottom-10 w-fit bg-orange-500 transition-colors duration-300 hover:text-white  mb-2 rounded-lg">
-        <CiLogout size={25} />
-        <h3 className="text-sm ml-5">logOut</h3>
-      </div>
+      {/*  */}
 
     </div>
   )
