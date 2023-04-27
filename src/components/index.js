@@ -16,3 +16,7 @@ export { default as SideBar }
 from "./SideBar"
 export { default as Chat }
 from "./Chat"
+export { default as Modal }
+from "./Modal"
+export { default as Loader }
+from "./Load"

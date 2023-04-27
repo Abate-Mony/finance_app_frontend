@@ -3,15 +3,12 @@ import { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { CiCalendarDate, CiTimer } from 'react-icons/ci'
-// import {listItems} from '../'
+import {appimage} from '../Assests/images'
 import { menulist } from "../Assests/listitems";
 
 const CheckOut = () => {
-    const navigate = useNavigate()
-    //   const gotoInfo = () => navigate("/information");
     const [selected, setSelected] = useState(true)
     const { service_id } = useParams()
-
     const [startDate, setStartDate] = useState(new Date());
     const [update, setUpdate] = useState(0)
     useEffect(() => {
@@ -27,8 +24,9 @@ const CheckOut = () => {
 
             <div className="hidden lg:block mb-[100px] md:mb-0 md:w-8/12 lg:w-6/12">
                 <img
-                    src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                    className="w-full"
+                    // src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                    src={appimage}
+                    className="w-full min-h-[calc(100vh-60px)]"
                     alt="Phone image" />
             </div>
             <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4">
@@ -55,15 +53,6 @@ const CheckOut = () => {
                             inline
                         />
                     </div>
-
-
-
-
-
-
-
-
-
 
                     <h1 className="font-[500] text-lg md:text-xl mt-8 leading-[3] flex  gap-2 items-center uppercase"><span>Select Time </span> <CiCalendarDate size={25} /></h1>
                     <div className="flex flex-wrap">

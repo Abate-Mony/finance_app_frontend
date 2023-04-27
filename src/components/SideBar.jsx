@@ -53,6 +53,7 @@ const SideBar = () => {
     <div className={`w-[200px] select-none max-w-[calc(100vw-40px)] z-[100]
     px-4 text-xs overflow-y--auto flex-none fixed md:static transition-[left] duration-700
     ${isSideOpen ? "left-0" : "left-[-100%]"} top-0 h-full md:top-0 bg-color_light md:h-[calc(100svh-60px)] overflow-visible border`}>
+    
       <span className="absolute w-[50px] h-[50px] top-0 text-white hover:bg-red-500 transition-all md:hidden duration-500  -right-[50px] rounded-none flex items-center justify-center border-2 border-red-400"
 
         onClick={toggleSideBar}
@@ -85,6 +86,12 @@ const SideBar = () => {
 
       }
       {/*  */}
+      <div
+      onClick={() => navigate("/")}
+      className=" md:hidden  absolute bottom-8   py-2 px-10 items-center text-white ml-auto hover:bg-blue-800   w-fit bg-blue-500 transition-colors duration-300 hover:text-white  mb-2 rounded-lg">
+      {/* <CiLogout size={25} /> */}
+      <h3 className="text-xs ml-2">view site</h3>
+  </div>
 
     </div>
   )

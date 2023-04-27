@@ -247,3 +247,8 @@ body {
 .react-datepicker-wrapper {
     width: 100%;
 }
+
+.task-btn.active::before {
+    content: "please wait ...";
+    @apply absolute w-full h-full z-10 left-0 top-0 bg-blue-300 flex items-center justify-center rounded-sm;
+}

@@ -1,6 +1,16 @@
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [active, setActive] = useState(false)
+  const handeSubmit = async (e) => {
+    setActive(true)
+    e.preventDefault()
+    setTimeout(() => {
+      navigate("/dashboard")
+    }, 5000)
+  }
+
   return (
     <section className="h-screen" >
       <div className="container h-full px-6 md:py-24 ">
@@ -15,7 +25,7 @@ const Login = () => {
 
           <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
             <h1 className="text-2xl  text-center  mb-10 uppercase">Login as Admin</h1>
-            <form>
+            <form onSubmit={handeSubmit}>
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
@@ -134,9 +144,9 @@ const Login = () => {
 
 
 
-              <button
+              <button 
                 type="submit"
-                className="inline-block bg-blue-400
+                className={`inline-block bg-blue-400 task-btn relative ${active ? "active" : ""}
               w-full rounded bg-primary px-7
               pb-2.5 pt-3 text-sm font-medium
               uppercase leading-normal
@@ -152,9 +162,9 @@ const Login = () => {
               dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] 
               dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]
               dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]
-              dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]`}
                 data-te-ripple-init
-                data-te-ripple-color="light" onClick={() => navigate("/dashboard")}>
+                data-te-ripple-color="light" >
                 Sign in
               </button>
 

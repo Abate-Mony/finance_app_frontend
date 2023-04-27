@@ -1,2 +1,3 @@
 import possibility from './possibility.png'
-export { possibility }
+import appimage from './app.jpg'
+export { possibility, appimage }

@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom'
+// import {Loader} from '../components'
 const SingleAppointment = () => {
     const { id } = useParams()
 
     return (
         <>
+        {/* <Loader/> */}
             <h2 className="text-center  text-xl capitalize mb-2 mt-2  font-monserat font-meduim">information details  </h2>
             <h2 className="text-center  text-2xl uppercase mb-4 mt-2 gradient__text font-monserat font-meduim ">Financial planning  </h2>
             <div className="px-4 py-6 bg-slate-100 mx-2 rounded-lg">
