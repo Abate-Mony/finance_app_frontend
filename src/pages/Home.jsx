@@ -10,7 +10,7 @@ const Home = () => {
     <div className="home__wrapper h-scre overflow-y-auto" style={{ height: "calc(100vh - 60px)" }}>
 
       {/* <Cookies /> */}
-
+{/* {process.env.REACT_APP_BASE_LOCAL_URL} */}
 
       <Hero />
       <Advert />

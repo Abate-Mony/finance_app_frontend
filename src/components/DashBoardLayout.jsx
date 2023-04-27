@@ -11,6 +11,7 @@ const DashBoardLayout = () => {
     const navigate = useNavigate()
     const [logout, setLogout] = useState(false);
     const handleLogout = () => {
+    
         setLogout(true)
 
     }

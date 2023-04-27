@@ -1,14 +1,30 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 const Login = () => {
+  const url = "https://mrjamesserviceappbackend.vercel.app/admin/login"
+  const [number, setNumber] = useState(null)
+  const [password, setPassword] = useState("")
+const [error,setError]=useState(false)
   const navigate = useNavigate();
   const [active, setActive] = useState(false)
   const handeSubmit = async (e) => {
-    setActive(true)
     e.preventDefault()
-    setTimeout(() => {
+    setActive(true)
+    try {
+      const data = await axios.post(url, { phone: number, password })
+      localStorage.setItem("admin_token",data?.data?.token)
       navigate("/dashboard")
-    }, 5000)
+    } catch (err) {
+      console.log(err.response.data);
+      setActive(false);
+      setError(err.response.data)
+      setTimeout(() => {
+        setError(false)
+      }, 4000);
+    }
+
+
   }
 
   return (
@@ -27,8 +43,8 @@ const Login = () => {
             <h1 className="text-2xl  text-center  mb-10 uppercase">Login as Admin</h1>
             <form onSubmit={handeSubmit}>
               <div className="relative mb-6" data-te-input-wrapper-init>
-                <input
-                  type="text"
+                <input onChange={e => setNumber(e.target.value)}
+                  type="number"
                   className="peer block min-h-[auto] w-full 
                 rounded 
                 border-2
@@ -45,14 +61,10 @@ const Login = () => {
                 focus:placeholder:opacity-100
                 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="exampleFormControlInput3"
+                  value={number}
                   placeholder="Email address" required />
                 <label
                   htmlFor="exampleFormControlInput3"
-                  // className="
-                  // pointer-events-none 
-                  // absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0]
-                  // truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200
-                  // ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   className="pointer-events-none 
                 absolute left-3
                 top-0 mb-0
@@ -90,9 +102,9 @@ const Login = () => {
                 </label>
               </div>
 
-              <div className="relative mb-6" data-te-input-wrapper-init>
+              <div className="relative mb-4" data-te-input-wrapper-init>
                 <input
-                  type="password"
+                  type="password" onChange={e => setPassword(e.target.value)} value={password}
                   className="
                 peer block min-h-[auto] border-2 w-full rounded shadow-none
                 focus:border-2
@@ -142,9 +154,9 @@ const Login = () => {
                 </label>
               </div>
 
+<span className={`text-red-400 text-lg pl-4 ${error?"block":"hidden"}`}>{error}</span>
 
-
-              <button 
+              <button
                 type="submit"
                 className={`inline-block bg-blue-400 task-btn relative ${active ? "active" : ""}
               w-full rounded bg-primary px-7
