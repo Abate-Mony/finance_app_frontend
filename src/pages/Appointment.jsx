@@ -1,7 +1,37 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import axios from 'axios';
 const Appointment = () => {
     const navigate = useNavigate()
+    const [applications, setApplications] = useState([]);
+    const token = localStorage.getItem("admin_token");
+    console.log(token)
+    const url = "https://mrjamesserviceappbackend.vercel.app/application"
+
+   
+    useEffect(() => {
+        try {
+            async function fetchData() {
+                const response = await axios.get(url, {
+                    headers: {
+                        'Authorization': "mrjames " + token
+                    }
+                })
+                console.log(response?.data?.applications);
+                setApplications([...response?.data?.applications])
+              }
+              fetchData()
+           
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
+
+
+
+
+
+
     const [dropdown, setDropdown] = useState(false)
     const closeDropdown = () => {
         if (dropdown) {
@@ -16,7 +46,6 @@ const Appointment = () => {
     }
     const [selected, setSelected] = useState(0)
     const categoriesArray = [
-
 
         "All categories", "email", "phone", "service type", "fullnames", "age"
     ]
@@ -87,32 +116,31 @@ const Appointment = () => {
 
                         {
 
-                            Array.from({ length: 100 }, (arr, index) => (<tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+applications.map((application,index) => (<tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
 
-                               
                             >
                                 <td className="px-2 py-4 border flex items-center justify-center">
                                     {index + 1}
                                 </td>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Financial planning
+                                 {application?.service_type}
                                 </th>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Ako bate Emmanuel
+                                  {application?.fullname}
                                 </th>
                                 <td className="px-6 py-4">
-                                <a href={`https://wa.me/237672301714`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">672301714</a>
-                                  
+                                    <a href={`https://wa.me/237672301714`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">{application?.phone}</a>
+
                                 </td>
                                 <td className="px-6 py-4">
-                                <a href={`mailto:bateemma14@gmail.com`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">bateema14@gmail.com</a>
-                                
-                                    
+                                    <a href={`mailto:bateemma14@gmail.com`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">{application?.email}</a>
+
+
                                 </td>
                                 <td className="px-6 py-4">
-                                    35
+                                    {application?.age}
                                 </td>
-                                <td className="px-6 py-4"  onClick={() => navigate(`/dashboard/appointment/${index}`)}>
+                                <td className="px-6 py-4" onClick={() => navigate(`/dashboard/appointment/${index}`)}>
                                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                 </td>
                             </tr>

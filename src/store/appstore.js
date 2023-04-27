@@ -1,13 +1,9 @@
 import { createStore } from "redux"
-import axios from "axios"
-import { useState } from 'react'
-// const url = process.env.REACT_APP_BASE_LOCAL_URL
 
 const initialState = {
     openChat: false,
     openSideBar: false
 }
-
 
 
 const appReducer = async(initialState, action) => {
@@ -20,4 +16,4 @@ const appReducer = async(initialState, action) => {
             return initialState
     }
 }
-export const store = createStore(appReducer, initialState)
+export const store = createStore(appReducer, initialState);

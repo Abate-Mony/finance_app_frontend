@@ -9,16 +9,10 @@ import ScrollTo from "./withRouter"
 function App() {
   return (
     <div className="bg-color_light min-h-screen text-slate-700 dark:text-white dark:bg-color_dark">
-      <BrowserRouter>
         <Provider store={store}>
-
+      <BrowserRouter>
           <ScrollTo />
-
-
-
           <Routes >
-
-
             <Route path="dashboard" element={<DashBoardLayout />}>
               <Route  index element={<Appointment />} />
               {/* <Route index element={<Main />} /> */}
@@ -28,7 +22,6 @@ function App() {
               <Route path="appointment/:id" element={<AppointmentSingle />} />
             </Route>
             <Route path="auth" element={<Login />} />
-
             <Route path="/" element={<UserLayout />}>
               <Route index element={<Home />} />
               <Route path="service/:service_id" element={<ApplyService />} />
@@ -37,9 +30,9 @@ function App() {
             </Route>
 
           </Routes>
-        </Provider>
 
       </BrowserRouter>
+        </Provider>
     </div>
 
   );

@@ -2,12 +2,17 @@ import { CiLogout } from "react-icons/ci"
 
 import { Outlet, useNavigate } from "react-router-dom"
 import { SideBar, Modal } from './'
-import { useDispatch } from "react-redux"
+import { useDispatch,useSelector } from "react-redux"
 import { AiOutlineMenu } from "react-icons/ai"
 import { useState } from 'react'
 const DashBoardLayout = () => {
     const dispatch = useDispatch()
-    const toggleSideBar = () => dispatch(({ type: "openSideBar" }))
+    const isSideOpen = useSelector((state) => state.openSideBar)
+    const toggleSideBar = () =>{ dispatch(({ type: "openSideBar" }))
+    
+    console.log(isSideOpen)
+    
+    }
     const navigate = useNavigate()
     const [logout, setLogout] = useState(false);
     const handleLogout = () => {
