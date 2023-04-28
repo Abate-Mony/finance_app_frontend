@@ -2,6 +2,7 @@ import {  IoMdSend } from "react-icons/io"
 import { Recieve, Send } from "../components"
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useRef } from "react"
+import {actions} from '../actions/toggleChatBox'
 import { sendAudio } from "../Assests/audio"
 const ChatBox = () => {
     const [text, setText] = useState("")
@@ -16,10 +17,10 @@ const ChatBox = () => {
 
     }
 
-    const isOpen = useSelector(state => state.openChat)
+    const isOpen = useSelector(state => state.chatbox.isOpen)
     const dispatch = useDispatch()
 
-    const toggleChat = () => dispatch({ type: 'openChat' })
+    const toggleChat = () => dispatch(actions.toggleChatBox())
     return (
         <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
 

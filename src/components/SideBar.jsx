@@ -1,21 +1,21 @@
 import { IoMdClose } from "react-icons/io"
 import { RxDashboard } from "react-icons/rx"
 import { TiMessages } from "react-icons/ti"
-import { BsPeople } from "react-icons/bs"
 import { GrServicePlay } from "react-icons/gr"
 import { NavLink, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from 'react'
+import {actions} from '../actions/toggleSide'
+
 const SideBar = () => {
   useEffect(() => {
-    // on page refrest go to home
     navigate("/dashboard")
-
   }, [])
   const dispatch = useDispatch()
-  const isSideOpen = useSelector((state) => state.openSideBar)
+  const isSideOpen= useSelector((state) => state.sidebar.isOpen)
+
   // const isSideOpen =select((state)=>state.openSideBar)
-  const toggleSideBar = () => dispatch(({ type: "openSideBar" }))
+  const toggleSideBar = () => dispatch(actions.toggleSideBar())
   const [active, setActive] = useState(0);
   const navigate = useNavigate()
   const navLinks = [

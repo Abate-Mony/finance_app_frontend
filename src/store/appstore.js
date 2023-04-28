@@ -2,7 +2,8 @@ import { createStore } from "redux"
 
 const initialState = {
     openChat: false,
-    openSideBar: false
+    openSideBar: false,
+    data: []
 }
 
 

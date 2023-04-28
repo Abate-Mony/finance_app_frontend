@@ -3,14 +3,23 @@ import { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { CiCalendarDate, CiTimer } from 'react-icons/ci'
-import {appimage} from '../Assests/images'
+import { appimage } from '../Assests/images'
 import { menulist } from "../Assests/listitems";
+import axios from 'axios'
 
 const CheckOut = () => {
+    const availableTimes = ["10: am", "12:am", "3:35pm", "7:00 am", "5:50pm", "8:30pm"];
     const [selected, setSelected] = useState(true)
     const { service_id } = useParams()
     const [startDate, setStartDate] = useState(new Date());
     const [update, setUpdate] = useState(0)
+    const [message,setMessage]=useState("");
+    const [sex,setSex]=useState("male");
+    const [fullname,setFullName]=useState("")
+    const [phone,setPhone]=useState("")
+    const [age,setAge]=useState("");
+    const [email,setEmail]=useState("")
+    
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -18,6 +27,33 @@ const CheckOut = () => {
         })
 
     }, [update])
+
+    const baseUrl = process.env.REACT_APP_BASE_PROD_URL + "/application"
+    // alert(baseUrl)
+    const handleSubmit = async (e) => {
+    e.preventDefault()
+        try {
+
+            const response =await axios.post(baseUrl, {
+                service_type: service_id,
+                time:availableTimes[selected],
+                date:startDate,
+                fullname,
+                phone,
+                age,sex,email
+
+
+            })
+            console.log(response)
+
+        } catch (err) {
+console.log(err)
+
+        }
+
+
+    }
+
     return (
 
         <div className='flex container mx-auto  overflow-y-hidden'>
@@ -58,7 +94,7 @@ const CheckOut = () => {
                     <div className="flex flex-wrap">
 
                         {
-                            Array.from({ length: 6 }, (arr, i) => (<div key={i} className="w-1/3  flex justify-center px-4 py-2">
+                            availableTimes.map((time, i) => (<div key={i} className="w-1/3  flex justify-center px-4 py-2">
 
                                 <button type="button" class={` text-xs mx-auto transition-colors duration-500 ${selected === i ? "bg-blue-800 scale-[1.2] text-white shadow-2xl " : "text-blue-700"}
                                 hover:text-white border border-blue-700
@@ -69,14 +105,12 @@ const CheckOut = () => {
                                 px-5 py-2.5 text-center 
                                 dark:border-blue-500 dark:text-blue-500
                                 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800`}
-
                                     onClick={() => {
                                         setSelected(i)
                                         window.navigator.vibrate([50])
                                     }}
-
                                 >
-                                    12:0 am
+                                    {time}
 
                                 </button>
 
@@ -90,12 +124,14 @@ const CheckOut = () => {
 
 
                 </div>
-                <form className='px-4 py-5 shadow-md'>
+                <form className='px-4 py-5 shadow-md' onSubmit={handleSubmit}>
 
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
                             type="text"
+                            vale={fullname}
+                            onChange={e=>setFullName(e.target.value)}
                             className="peer block min-h-[auto] w-full 
   rounded 
   border-2
@@ -151,6 +187,8 @@ const CheckOut = () => {
                     </div>
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
+                           vale={phone}
+                           onChange={e=>setPhone(e.target.value)}
                             type="number"
                             className="peer block min-h-[auto] w-full 
   rounded 
@@ -208,6 +246,9 @@ const CheckOut = () => {
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
+                        
+                        vale={email}
+                        onChange={e=>setEmail(e.target.value)}
                             type="text"
                             className="peer block min-h-[auto] w-full 
   rounded 
@@ -306,7 +347,8 @@ const CheckOut = () => {
                         </div>
 
                         <div className="relative w-[80px] flex-none" data-te-input-wrapper-init>
-                            <input
+                            <input   vale={age}
+                            onChange={e=>setAge(e.target.value)}
                                 type="number"
                                 className="peer block min-h-[auto] w-full 
   rounded
@@ -364,7 +406,12 @@ const CheckOut = () => {
                     </div>
 
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                    <textarea id="message"
+                    
+                    vale={message}
+                    onChange={e=>setMessage(e.target.value)}
+                    
+                    rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
                     <button
                         type="submit"

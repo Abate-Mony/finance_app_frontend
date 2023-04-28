@@ -3,6 +3,8 @@ import { Recieve, Send } from "../components"
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useRef } from "react"
 import { sendAudio } from "../Assests/audio"
+import {actions} from '../actions/toggleChatBox'
+
 const ChatBox = () => {
     const [text, setText] = useState("")
     const [arr, setArr] = useState([])
@@ -16,12 +18,17 @@ const ChatBox = () => {
 
     }
 
-    const isOpen = useSelector(state => state.openChat)
+    // const isOpen = useSelector(state => state.chatbox.isOpen)
+    const isOpen = useSelector(state => state.chatbox.isOpen)
     const dispatch = useDispatch()
 
-    const toggleChat = () => dispatch({ type: 'openChat' })
+    const toggleChat = () => {
+    
+    console.log(isOpen)
+    
+    dispatch(actions.toggleChatBox())}
     return (
-        <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
+        <div className={`fixed   w-full h-[100vh] chat-container- bg-slate-400 z-20 bg-opacity-5 active `}  onClick={toggleChat}>
 
             <div onClick={e => e.stopPropagation()} className={` chat-sm-container cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
                 <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar" style={{

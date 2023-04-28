@@ -2,14 +2,13 @@
 import { UserLayout, DashBoardLayout } from "./components";
 import { Home, ApplyService, ContactUs, Login, Main, Messages, Services,MessageBox ,Appointment,AppointmentSingle} from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { store } from "./store/appstore";
-import { Provider } from 'react-redux'
+// import { store } from "./store/appstore";
 import ScrollTo from "./withRouter"
 
 function App() {
   return (
     <div className="bg-color_light min-h-screen text-slate-700 dark:text-white dark:bg-color_dark">
-        <Provider store={store}>
+        {/* <Provider store={store}> */}
       <BrowserRouter>
           <ScrollTo />
           <Routes >
@@ -32,7 +31,7 @@ function App() {
           </Routes>
 
       </BrowserRouter>
-        </Provider>
+        {/* </Provider> */}
     </div>
 
   );

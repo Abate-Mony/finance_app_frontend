@@ -4,13 +4,14 @@ import { Outlet, useNavigate } from "react-router-dom"
 import { SideBar, Modal } from './'
 import { useDispatch,useSelector } from "react-redux"
 import { AiOutlineMenu } from "react-icons/ai"
+import {actions} from '../actions/toggleSide'
 import { useState } from 'react'
 const DashBoardLayout = () => {
     const dispatch = useDispatch()
-    const isSideOpen = useSelector((state) => state.openSideBar)
-    const toggleSideBar = () =>{ dispatch(({ type: "openSideBar" }))
-    
-    console.log(isSideOpen)
+    const isOpen = useSelector((state) => state.sidebar.isOpen)
+    const toggleSideBar = () =>{
+    dispatch(actions.toggleSideBar())
+    console.log(isOpen)
     
     }
     const navigate = useNavigate()

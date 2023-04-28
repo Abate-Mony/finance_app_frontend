@@ -203,6 +203,7 @@ body {
 
 .chat-height {
     height: calc(100vh - 200px);
+    max-height: 600px;
 }
 
 .scroll-bar::-webkit-scrollbar-thumb {
@@ -227,7 +228,7 @@ body {
 
 .chat-sm-container {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translate(50px);
     transition: opacity 0.4s ease, transform 0.3s ease;
 }
 
