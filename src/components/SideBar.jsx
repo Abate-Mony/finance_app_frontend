@@ -13,8 +13,6 @@ const SideBar = () => {
   }, [])
   const dispatch = useDispatch()
   const isSideOpen= useSelector((state) => state.sidebar.isOpen)
-
-  // const isSideOpen =select((state)=>state.openSideBar)
   const toggleSideBar = () => dispatch(actions.toggleSideBar())
   const [active, setActive] = useState(0);
   const navigate = useNavigate()
@@ -50,15 +48,16 @@ const SideBar = () => {
 
   return (
 
-    <div className={`w-[200px] select-none max-w-[calc(100vw-40px)] z-[100]
+    <div className={`w-[12.5rem] select-none max-w-[calc(100vw-2.5rem)] z-[100]
     px-4 text-xs overflow-y--auto flex-none fixed md:static transition-[left] duration-700
-    ${isSideOpen ? "left-0" : "left-[-100%]"} top-0 h-full md:top-0 bg-color_light md:h-[calc(100svh-60px)] overflow-visible border`}>
+    ${isSideOpen ? "left-0" : "left-[-100%]"} top-0 h-full md:top-0 bg-color_light md:h-[calc(100svh-3.75rem)] overflow-visible border`}>
     
-      <span className="absolute w-[50px] h-[50px] top-0 text-white hover:bg-red-500 transition-all md:hidden duration-500  -right-[50px] rounded-none flex items-center justify-center border-2 border-red-400"
-
+      <span className="absolute w-[3.125rem] h-[3.125rem] top-0
+       text-red-700 hover:bg-orange-500 rounded-e-md transition-all md:hidden duration-500 
+       -right-[3.125rem] z-10 rounded-none flex items-center justify-center border-2- font-black border-black"
         onClick={toggleSideBar}
       >
-        <IoMdClose size={30} />
+        <IoMdClose size={25} />
       </span>
       <h3 className="text-2xl text-center py-4 font-manrope md:hidden ">Dashboard</h3>
       {/*  */}

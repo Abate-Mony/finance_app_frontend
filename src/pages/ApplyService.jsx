@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { CiCalendarDate, CiTimer } from 'react-icons/ci'
@@ -8,22 +8,26 @@ import { menulist } from "../Assests/listitems";
 import axios from 'axios'
 
 const CheckOut = () => {
+    const navigate = useNavigate()
+    const [active, setActive] = useState(false)
+    const [error, setError] = useState(false)
+    const sideContainer = useRef(null)
     const availableTimes = ["10: am", "12:am", "3:35pm", "7:00 am", "5:50pm", "8:30pm"];
     const [selected, setSelected] = useState(true)
     const { service_id } = useParams()
     const [startDate, setStartDate] = useState(new Date());
     const [update, setUpdate] = useState(0)
-    const [message,setMessage]=useState("");
-    const [sex,setSex]=useState("male");
-    const [fullname,setFullName]=useState("")
-    const [phone,setPhone]=useState("")
-    const [age,setAge]=useState("");
-    const [email,setEmail]=useState("")
-    
+    const [message, setMessage] = useState("");
+    const [sex, setSex] = useState("male");
+    const [fullname, setFullName] = useState("")
+    const [phone, setPhone] = useState("")
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("")
+
     useEffect(() => {
-        window.scrollTo({
+        sideContainer.current.scrollTo({
             top: 0,
-            behavior: "auto"
+            behavior: "smooth"
         })
 
     }, [update])
@@ -31,23 +35,31 @@ const CheckOut = () => {
     const baseUrl = process.env.REACT_APP_BASE_PROD_URL + "/application"
     // alert(baseUrl)
     const handleSubmit = async (e) => {
-    e.preventDefault()
+        setActive(true)
+        e.preventDefault()
         try {
 
-            const response =await axios.post(baseUrl, {
+            const response = await axios.post(baseUrl, {
                 service_type: service_id,
-                time:availableTimes[selected],
-                date:startDate,
+                time: availableTimes[selected],
+                date: startDate,
                 fullname,
                 phone,
-                age,sex,email
+                age, sex, email
 
 
             })
             console.log(response)
+            setActive(false)
+
 
         } catch (err) {
-console.log(err)
+            console.log(err)
+            setActive(false)
+            setError(err.response.data)
+            setTimeout(() => {
+                setError(false)
+            }, 4000);
 
         }
 
@@ -65,14 +77,14 @@ console.log(err)
                     className="w-full min-h-[calc(100vh-60px)]"
                     alt="Phone image" />
             </div>
-            <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4">
+            <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4" ref={sideContainer}>
 
                 <div className="flex-1">
 
                     <div className="bg-blue-400 bg-opacity-75 flex py-4 shadow-lg  rounded-md  gap-4 ">
                         <div className="flex-none"></div>
                         <div className="flex-1">
-                            <h1 className="text-lg md:text-xl text-center md:text-start">service for  {service_id}</h1>
+                            <h1 className="text-lg md:text-xl text-center md:text-start">service for  <span className='gradient__text- font-semibold'>{service_id}</span></h1>
                             <p></p>
                         </div>
                         <div className="flex-none"></div>
@@ -131,7 +143,7 @@ console.log(err)
                         <input
                             type="text"
                             vale={fullname}
-                            onChange={e=>setFullName(e.target.value)}
+                            onChange={e => setFullName(e.target.value)}
                             className="peer block min-h-[auto] w-full 
   rounded 
   border-2
@@ -187,8 +199,8 @@ console.log(err)
                     </div>
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
-                           vale={phone}
-                           onChange={e=>setPhone(e.target.value)}
+                            vale={phone}
+                            onChange={e => setPhone(e.target.value)}
                             type="number"
                             className="peer block min-h-[auto] w-full 
   rounded 
@@ -246,9 +258,9 @@ console.log(err)
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
-                        
-                        vale={email}
-                        onChange={e=>setEmail(e.target.value)}
+
+                            vale={email}
+                            onChange={e => setEmail(e.target.value)}
                             type="text"
                             className="peer block min-h-[auto] w-full 
   rounded 
@@ -347,8 +359,8 @@ console.log(err)
                         </div>
 
                         <div className="relative w-[80px] flex-none" data-te-input-wrapper-init>
-                            <input   vale={age}
-                            onChange={e=>setAge(e.target.value)}
+                            <input vale={age}
+                                onChange={e => setAge(e.target.value)}
                                 type="number"
                                 className="peer block min-h-[auto] w-full 
   rounded
@@ -407,17 +419,17 @@ console.log(err)
 
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
                     <textarea id="message"
-                    
-                    vale={message}
-                    onChange={e=>setMessage(e.target.value)}
-                    
-                    rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
+                        vale={message}
+                        onChange={e => setMessage(e.target.value)}
+
+                        rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                    <span className={`py-4 text-2xl mx-auto block text-center ${error?"block":"hidden"}`}>{error}</span>
                     <button
                         type="submit"
                         a data-te-ripple-init
                         data-te-ripple-color="light"
-                        className={`
+                        className={` task-btn ${active ? "active" : ""}
   inline-block rounded fixed bottom-4 left-[50%] z-10 translate-x-[-50%] md:hidden w-[400px] max-w-[90vw]   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
 leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150
 ease-in-out hover:bg-primary-600 mx-auto
@@ -435,7 +447,7 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                             type="submit"
                             a data-te-ripple-init
                             data-te-ripple-color="light"
-                            className={` md:inline-block rounded hidden  bottom-4    w-[400px] max-w-[90vw]   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
+                            className={` md:inline-block task-btn ${active ? "active" : ""} relative rounded hidden  bottom-4    w-[400px] max-w-[90vw]   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
 leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150
 ease-in-out hover:bg-primary-600 mx-auto
 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
@@ -450,24 +462,21 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                     </div>
 
                 </form>
-                <h1 className="text-2xl uppercase text-center gradient__text mt-10 mb-4">{service_id} </h1>
-                <p className="text-xl  ">Our service for <span className="gradient__text"> {service_id}</span> is design to make the best out of the best in a way the user
+                <h1 className="text-xl md:text-2xl font-manrope uppercase text-center gradient__text mt-10 mb-4">{service_id} </h1>
+                <p className="text-lg md:text-xl  ">Our service for <span className="gradient__text"> {service_id}</span> is design to make the best out of the best in a way the user
                     ake your financial ability to the next level with our coaching advice and ideas for a better tomorrow
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam tempore eaque, quidem qui dolore aut omnis distinctio, numquam velit pariatur quam vitae eos officia iusto, perspiciatis recusandae
 
                 </p>
 
-                <h1 className="text-lg md:text-xl text-center md:text-start uppercase mb-4 gradient__text">related services</h1>
+                <h1 className="text-lg md:text-xl text-center md:text-start uppercase mb-4 gradient__text font-medium ">related services</h1>
                 {
 
-
                     menulist.slice(3).sort(() => 0.5 - Math.random()).map((item, index) => item !== service_id ? (<div
-
                         onClick={() => {
-
-                            setUpdate(Math.random())
+                            setUpdate(Math.random());
+                            navigate(`/service/${item}`)
                         }}
-                        className="bg-orange-300 px-5 w-fit mb-2 inline-block mx-4 rounded-md" key={index}>{item} </div>) : "")
+                        className="bg-green-300 px-6 w-fit mb-2 py-2 inline-block mx-4 rounded-md" key={index}>{item} </div>) : "")
                 }
             </div>
             <div className="mb-[200px]" />

@@ -24,10 +24,9 @@ const ChatBox = () => {
     return (
         <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
 
-            <div onClick={e => e.stopPropagation()} className={` chat-sm-container cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
-                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar" style={{
-                    height: "calc(100% - 50px)" 
-                }} ref={scrollRef}>
+            <div onClick={e => e.stopPropagation()} className={` chat-sm-container w-[25rem] max-w-[calc(100vw-2.5rem)]   shadow-2xl  rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
+                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar h-[calc(100vh-15rem)] " 
+               ref={scrollRef}>
 
                     {
                         arr.length < 1 ? <div className="h-full w-full flex flex-col items-center justify-center">
@@ -42,15 +41,14 @@ const ChatBox = () => {
 
 
                 </div>
-                <div className="h-[50px] bottom-0 w-full shadow-2xl bg-white dark:bg-slate-600 left-0  
+                <div className="h-[3.125rem] bottom-0 w-full shadow-2xl bg-white dark:bg-slate-600 left-0  
             flex items-center justify-center px-4
-            gap-2 min-h-[50px]
+            gap-2 min-h-[3.125rem]
             
          py-1 z-40">
 
-                    <div className="input-container  focus:shadow-2xl h-[40px] " style={{ flex: 1 }}>
+                    <div className="input-container  focus:shadow-2xl h-[2.5rem] flex-1" >
                         <input type="text" name="text" id="text" placeholder='Message ' value={text} onChange={e => {
-
                             setText(e.target.value)
 
 
@@ -64,7 +62,7 @@ const ChatBox = () => {
                     </div>
 
                     <IoMdSend onClick={() => handleSend()}
-                        size={30} className={`text-blue-400
+                        size={25} className={`text-blue-400
                         ${true > 0 ? "translate-x-0" : "translate-x-4"} `} />
 
                 </div>

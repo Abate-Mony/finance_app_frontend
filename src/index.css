@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    @apply font-poppins;
+    @apply font-poppins text-[1rem];
     overscroll-behavior: contain;
 }
 
@@ -173,7 +173,7 @@ body {
 
 .cal-width {
     --w: 400px;
-    width: min(var(--w), calc(100vw - 30px));
+    width: min(var(--w), calc(100vw - 2.5rem));
 }
 
 .scale-info {
@@ -201,10 +201,11 @@ body {
     width: min(300px, calc(100vw - 20px));
 }
 
-.chat-height {
+
+/* .chat-height {
     height: calc(100vh - 200px);
     max-height: 600px;
-}
+} */
 
 .scroll-bar::-webkit-scrollbar-thumb {
     background: orange;

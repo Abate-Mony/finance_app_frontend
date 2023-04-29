@@ -1,6 +1,6 @@
 
 import { UserLayout, DashBoardLayout } from "./components";
-import { Home, ApplyService, ContactUs, Login, Main, Messages, Services,MessageBox ,Appointment,AppointmentSingle} from "./pages";
+import { Home, ApplyService, ContactUs, Login,SingleService, Messages, Services,MessageBox ,Appointment,AppointmentSingle} from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { store } from "./store/appstore";
 import ScrollTo from "./withRouter"
@@ -18,7 +18,9 @@ function App() {
               <Route path="messages" element={<Messages />} />
               <Route path="messages/:id" element={<MessageBox />} />
               <Route path="services" element={<Services />} />
+              <Route path="services:/id" element={<SingleService/>} />
               <Route path="appointment/:id" element={<AppointmentSingle />} />
+              
             </Route>
             <Route path="auth" element={<Login />} />
             <Route path="/" element={<UserLayout />}>

@@ -7,6 +7,8 @@ import { AiOutlineMenu } from "react-icons/ai"
 import {actions} from '../actions/toggleSide'
 import { useState } from 'react'
 const DashBoardLayout = () => {
+
+
     const dispatch = useDispatch()
     const isOpen = useSelector((state) => state.sidebar.isOpen)
     const toggleSideBar = () =>{
@@ -14,6 +16,26 @@ const DashBoardLayout = () => {
     console.log(isOpen)
     
     }
+    // const url = "https://mrjamesserviceappbackend.vercel.app/application"
+    
+    
+    // useEffect(() => {
+    //     try {
+    //         async function fetchData() {
+    //             const response = await axios.get(url, {
+    //                 headers: {
+    //                     'Authorization': "mrjames " + token
+    //                 }
+    //             })
+    //             console.log(response?.data?.applications);
+    //             setApplications([...response?.data?.applications])
+    //           }
+    //           fetchData()
+           
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }, [])
     const navigate = useNavigate()
     const [logout, setLogout] = useState(false);
     const handleLogout = () => {
