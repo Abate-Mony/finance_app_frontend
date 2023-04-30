@@ -24,3 +24,5 @@ export { default as AppointmentSingle }
 from './AppointmentSingle'
 export { default as SingleService }
 from './SingleService'
+export { default as Aboutus }
+from './Aboutus'

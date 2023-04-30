@@ -1,8 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
 // import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 const Hero = () => {
+const navigate=useNavigate();
+
   return (
     <div className="  container mx-auto bg-color_white dark:bg-color_black ">
       <div className="flex md:flex-row-reverse lg:py-2">
@@ -50,6 +53,7 @@ focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18p
 focus:outline-none focus:ring-0 active:bg-primary-700
 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
 dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                
                 >
                   Get Started
                 </button>
@@ -60,17 +64,16 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
             </div>
           </SwiperSlide>
           <SwiperSlide> {/*  */}
-            <div className="mx-2 my-8 min-h-[18.75rem] rounded-lg shadow-lg before:bg-orange-400
+            <div className="mx-2 my-8 min-h-[18.75rem] rounded-lg shadow-lg before:bg-orange-400 
                after:bg-orange-400 overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
 
               <div className="flex-1 p-4 relative">
                 <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">
-                  We focus on <br className="md:hidden" />
-                  Your Story
+                  We make you choose <br className="md:hidden" />
+                 the right path
 
                 </h1>
                 <p className="my-4 leading-[1.7] md:text-lg lg:text-xl">
-
 
                   We know you live your life to the fullest we just help you plan for it.
                   Because making the right decision matters in life.
@@ -102,8 +105,8 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
 
               <div className="flex-1 p-4 relative">
                 <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">
-                  We focus on <br className="md:hidden" />
-                  Your Story
+                  The results speaks  <br className="md:hidden" />
+            for themeselves
 
                 </h1>
                 <p className="my-4 leading-[1.7] md:text-lg lg:text-xl">

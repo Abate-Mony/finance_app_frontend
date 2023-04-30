@@ -3,17 +3,19 @@ import { useState, useEffect, useRef } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { CiCalendarDate, CiTimer } from 'react-icons/ci'
+import { BsChevronLeft } from 'react-icons/bs'
 import { appimage } from '../Assests/images'
 import { menulist } from "../Assests/listitems";
 import axios from 'axios'
-
+import { Alert } from '../components'
+import Select from 'react-select'
 const CheckOut = () => {
     const navigate = useNavigate()
     const [active, setActive] = useState(false)
     const [error, setError] = useState(false)
     const sideContainer = useRef(null)
     const availableTimes = ["10: am", "12:am", "3:35pm", "7:00 am", "5:50pm", "8:30pm"];
-    const [selected, setSelected] = useState(true)
+    const [selected, setSelected] = useState(null)
     const { service_id } = useParams()
     const [startDate, setStartDate] = useState(new Date());
     const [update, setUpdate] = useState(0)
@@ -23,7 +25,16 @@ const CheckOut = () => {
     const [phone, setPhone] = useState("")
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("")
-
+    const reset = () => {
+        setAge("")
+        setFullName("")
+        setPhone("")
+        setEmail("")
+        setMessage("")
+        setSelected(null)
+        setActive(false)
+        console.log("resting value")
+    }
     useEffect(() => {
         sideContainer.current.scrollTo({
             top: 0,
@@ -31,14 +42,37 @@ const CheckOut = () => {
         })
 
     }, [update])
+    const options = [
+        {
 
+            value: "cameroon", label: "Cameron"
+        }, {
+            value: "Nigeria", label: "Nigerai"
+        }, {
+            value: "mali", label: "Mali"
+        },
+        {
+
+            value: "cameroon", label: "Cameron"
+        }, {
+            value: "Nigeria", label: "Nigerai"
+        }, {
+            value: "mali", label: "Mali"
+        },
+        {
+
+            value: "cameroon", label: "Cameron"
+        }, {
+            value: "Nigeria", label: "Nigerai"
+        }, {
+            value: "mali", label: "Mali"
+        },
+    ]
     const baseUrl = process.env.REACT_APP_BASE_PROD_URL + "/application"
-    // alert(baseUrl)
     const handleSubmit = async (e) => {
         setActive(true)
         e.preventDefault()
         try {
-
             const response = await axios.post(baseUrl, {
                 service_type: service_id,
                 time: availableTimes[selected],
@@ -47,11 +81,9 @@ const CheckOut = () => {
                 phone,
                 age, sex, email
 
-
             })
             console.log(response)
-            setActive(false)
-
+            reset()
 
         } catch (err) {
             console.log(err)
@@ -69,7 +101,7 @@ const CheckOut = () => {
     return (
 
         <div className='flex container mx-auto  overflow-y-hidden'>
-
+            <Alert />
             <div className="hidden lg:block mb-[100px] md:mb-0 md:w-8/12 lg:w-6/12">
                 <img
                     // src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
@@ -81,13 +113,13 @@ const CheckOut = () => {
 
                 <div className="flex-1">
 
-                    <div className="bg-blue-400 bg-opacity-75 flex py-4 shadow-lg  rounded-md  gap-4 ">
-                        <div className="flex-none"></div>
+                    <div className="bg-blue-400 bg-opacity-75 flex py-2 shadow-lg  rounded-md  gap-4 ">
+                        <div className="flex-none ml-2 w-[1.875rem] mr-1 h-[1.875rem] flex items-center rounded-full hover:bg-slate-100 duration-300 transition-colors" onClick={() => navigate("/")}><BsChevronLeft size={25} /></div>
                         <div className="flex-1">
-                            <h1 className="text-lg md:text-xl text-center md:text-start">service for  <span className='gradient__text- font-semibold'>{service_id}</span></h1>
+                            <h1 className="text-lg md:text-xl text-center- md:text-start">service for  <span className='gradient__text- font-semibold'>{service_id}</span></h1>
                             <p></p>
                         </div>
-                        <div className="flex-none"></div>
+                        {/* <div className="flex-none"></div> */}
 
                     </div>
                     <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex items-center gap-2 uppercase"><span>Select date</span> <CiTimer size={25} /> </h1>
@@ -136,13 +168,17 @@ const CheckOut = () => {
 
 
                 </div>
+                <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex
+                items-center gap-2 uppercase"><span>Select Country</span> <CiTimer size={25} /> </h1>
+
+                <Select options={options} />
                 <form className='px-4 py-5 shadow-md' onSubmit={handleSubmit}>
 
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
                             type="text"
-                            vale={fullname}
+                            value={fullname}
                             onChange={e => setFullName(e.target.value)}
                             className="peer block min-h-[auto] w-full 
   rounded 
@@ -199,7 +235,7 @@ const CheckOut = () => {
                     </div>
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
-                            vale={phone}
+                            value={phone}
                             onChange={e => setPhone(e.target.value)}
                             type="number"
                             className="peer block min-h-[auto] w-full 
@@ -259,7 +295,7 @@ const CheckOut = () => {
                     <div className="relative mb-6" data-te-input-wrapper-init>
                         <input
 
-                            vale={email}
+                            value={email}
                             onChange={e => setEmail(e.target.value)}
                             type="text"
                             className="peer block min-h-[auto] w-full 
@@ -359,7 +395,7 @@ const CheckOut = () => {
                         </div>
 
                         <div className="relative w-[80px] flex-none" data-te-input-wrapper-init>
-                            <input vale={age}
+                            <input value={age}
                                 onChange={e => setAge(e.target.value)}
                                 type="number"
                                 className="peer block min-h-[auto] w-full 
@@ -420,11 +456,11 @@ const CheckOut = () => {
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
                     <textarea id="message"
 
-                        vale={message}
+                        value={message}
                         onChange={e => setMessage(e.target.value)}
 
                         rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
-                    <span className={`py-4 text-2xl mx-auto block text-center ${error?"block":"hidden"}`}>{error}</span>
+                    <span className={`py-4 text-2xl mx-auto block text-center ${error ? "block" : "hidden"}`}>{error}</span>
                     <button
                         type="submit"
                         a data-te-ripple-init

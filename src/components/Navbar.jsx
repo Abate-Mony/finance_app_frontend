@@ -24,12 +24,7 @@ const Navbar = () => {
     }, [])
     const [notification, setNotification] = useState(false)
     const navigate = useNavigate()
-    const gotoLoginPage = (val = true) => {
-        if (!val) {
-            navigate("/")
-        }
-        setIsOpen(false)
-    }
+
 
     const [isOpen, setIsOpen] = useState(false)
     const [darkTheme, setDarkTheme] = useState(false)
@@ -60,9 +55,11 @@ const Navbar = () => {
 
                 </div>
                 <ul className="hidden flex-col md:flex-row  md:flex items-center">
-                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'><a href="#our-services">Our Service</a></li>
-                    <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>About Us</li>
-                    <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'><NavLink
+                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=>navigate("/")}><a href="#our-services">Our Service</a></li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
+                        to="/about-us"
+                        className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
+                    >About Us</NavLink></li> <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'><NavLink
                         to="/contact-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
                     >Contact Us</NavLink></li>
@@ -75,11 +72,14 @@ const Navbar = () => {
 
 
 
-                <ul className={`${!isOpen ? " max-h-0" :
+                <ul onClick={()=>setIsOpen(!isOpen)} className={`${!isOpen ? " max-h-0" :
                     " max-h-screen"} overflow-hidden transition-[max-height] duration-500  shadow
                     md:hidden absolute top-[60px] left-0 bg-color_light  dark:bg-color_dark dark:text-white  w-full `}>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={() => gotoLoginPage()}><a href="#our-services">Our Service</a></li>
-                    <li className='links-item border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={() => gotoLoginPage}>About Us</li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=>navigate("/")}><a href="#our-services">Our Service</a></li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
+                        to="/about-us"
+                        className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
+                    >About Us</NavLink></li>
                     <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
                         to="/contact-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
