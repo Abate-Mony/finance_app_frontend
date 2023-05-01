@@ -8,23 +8,19 @@ const navigate=useNavigate();
 
   return (
     <div className="  container mx-auto bg-color_white dark:bg-color_black ">
-      <div className="flex md:flex-row-reverse lg:py-2">
+      <div className="flex hero-swiper md:flex-row-reverse lg:py-2">
         <Swiper spaceBetween={1} slidesPerView={1} onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           modules={
             [Navigation, Pagination, Scrollbar, A11y, Autoplay]
           }
-          // navigation={{
-          //   prevEl: ".arrow__box-left",
-          //   nextEl: ".arrow__box-right",
-          // }}
+         
 
           autoplay={{
             delay: 2500,
             disableOnInteraction: false
           }}
           pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
         >
 
           <SwiperSlide>

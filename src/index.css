@@ -246,11 +246,18 @@ body {
     width: inherit;
 }
 
-.react-datepicker-wrapper {
-    width: 100%;
+.react-container,
+.react-datepicker,
+.react-datepicker__month-container,
+.react-datepicker__month {
+    width: 100% !important;
 }
 
 .task-btn.active::before {
     content: "please wait ...";
     @apply absolute w-full h-full z-10 left-0 top-0 bg-blue-300 flex items-center justify-center rounded-sm;
+}
+
+.hero-swiper.swiper-slide-active {
+    @apply translate-y-[-40px] duration-500 transition-[transform] border-4 border-orange-400
 }

@@ -9,6 +9,7 @@ import { menulist } from "../Assests/listitems";
 import axios from 'axios'
 import { Alert } from '../components'
 import Select from 'react-select'
+import { countryListAlpha2 } from '../Assests/country'
 const CheckOut = () => {
     const navigate = useNavigate()
     const [active, setActive] = useState(false)
@@ -25,6 +26,15 @@ const CheckOut = () => {
     const [phone, setPhone] = useState("")
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("")
+    const [options,setOptions]=useState([]);
+    
+    useEffect(()=>{
+        const _options = Object.values(countryListAlpha2).map((item) => ({
+            value: item, label: item
+    
+        }));
+        setOptions([..._options])
+    },[])
     const reset = () => {
         setAge("")
         setFullName("")
@@ -37,37 +47,14 @@ const CheckOut = () => {
     }
     useEffect(() => {
         sideContainer.current.scrollTo({
+
             top: 0,
             behavior: "smooth"
         })
 
     }, [update])
-    const options = [
-        {
 
-            value: "cameroon", label: "Cameron"
-        }, {
-            value: "Nigeria", label: "Nigerai"
-        }, {
-            value: "mali", label: "Mali"
-        },
-        {
 
-            value: "cameroon", label: "Cameron"
-        }, {
-            value: "Nigeria", label: "Nigerai"
-        }, {
-            value: "mali", label: "Mali"
-        },
-        {
-
-            value: "cameroon", label: "Cameron"
-        }, {
-            value: "Nigeria", label: "Nigerai"
-        }, {
-            value: "mali", label: "Mali"
-        },
-    ]
     const baseUrl = process.env.REACT_APP_BASE_PROD_URL + "/application"
     const handleSubmit = async (e) => {
         setActive(true)
@@ -116,7 +103,7 @@ const CheckOut = () => {
                     <div className="bg-blue-400 bg-opacity-75 flex py-2 shadow-lg  rounded-md  gap-4 ">
                         <div className="flex-none ml-2 w-[1.875rem] mr-1 h-[1.875rem] flex items-center rounded-full hover:bg-slate-100 duration-300 transition-colors" onClick={() => navigate("/")}><BsChevronLeft size={25} /></div>
                         <div className="flex-1">
-                            <h1 className="text-lg md:text-xl text-center- md:text-start">service for  <span className='gradient__text- font-semibold'>{service_id}</span></h1>
+                            <h1 className="text-lg md:text-xl text-center- md:text-start"><span className='gradient__text- font-medium'>{service_id}</span></h1>
                             <p></p>
                         </div>
                         {/* <div className="flex-none"></div> */}
@@ -125,8 +112,8 @@ const CheckOut = () => {
                     <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex items-center gap-2 uppercase"><span>Select date</span> <CiTimer size={25} /> </h1>
 
 
-                    <div className="flex flex-nowrap flex-row flex-1 max-h-screen   rounded-lg ">
-                        <DatePicker className='w-full'
+                    <div className="flex flex-nowrap flex-row flex-1 max-h-screen justify-center  rounded-lg ">
+                        <DatePicker className="react-container"
                             fixedHeight
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
@@ -171,7 +158,7 @@ const CheckOut = () => {
                 <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex
                 items-center gap-2 uppercase"><span>Select Country</span> <CiTimer size={25} /> </h1>
 
-                <Select options={options} />
+                <Select options={options} onChange={(e)=>e}/>
                 <form className='px-4 py-5 shadow-md' onSubmit={handleSubmit}>
 
 

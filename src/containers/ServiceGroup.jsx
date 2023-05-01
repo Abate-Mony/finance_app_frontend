@@ -112,9 +112,9 @@ export default function App() {
                                             <div class="flex-start flex items-center pt-3">
                                                 <div
                                                     class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                <p class="text-sm text-neutral-500 dark:text-neutral-300">
+                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
                                                     01.07.2021
-                                                </p>
+                                                </p> */}
                                             </div>
                                             <div class="mb-6 ml-4 mt-2">
                                                 <h4 class="mb-1.5 text-lg font-semibold">Founding budget and coaching </h4>
@@ -129,9 +129,9 @@ export default function App() {
                                             <div class="flex-start flex items-center pt-2">
                                                 <div
                                                     class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                <p class="text-sm text-neutral-500 dark:text-neutral-300">
+                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
                                                     13.09.2021
-                                                </p>
+                                                </p> */}
                                             </div>
                                             <div class="mb-6 ml-4 mt-2">
                                                 <h4 class="mb-1.5 text-lg font-semibold">financial and planning </h4>
@@ -145,9 +145,9 @@ export default function App() {
                                             <div class="flex-start flex items-center pt-2">
                                                 <div
                                                     class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                <p class="text-sm text-neutral-500 dark:text-neutral-300">
+                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
                                                     25.11.2021
-                                                </p>
+                                                </p> */}
                                             </div>
                                             <div class="ml-4 mt-2 pb-5">
                                                 <h4 class="mb-1.5 text-lg font-semibold">porfolio management for all business and personal acounts </h4>
@@ -163,7 +163,6 @@ export default function App() {
                                     variants={animateOpacity}
                                     initial={"offscreen"}
                                     whileInView={"onscreen"}
-                        
                                     
                                     onClick={()=>gotoservicepage(item)}
                                         type="button"
@@ -181,13 +180,8 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                                         Appy for Service
                                     </motion.button>
                                 </div>
-
                             </div>
-
-
                         </div>
-
-                        {/* <img src="https://swiperjs.com/demos/images/nature-1.jpg" /> */}
                     </SwiperSlide>))
 
                 }

@@ -2,7 +2,7 @@ import { Footer } from '../containers'
 
 const ContactUs = () => {
     return (
-        <div class="container my-24  mt-10 md:px-6 mx-auto">
+        <div class="container   mt-10 md:px-6 mx-auto">
                 <h1 className="text-slate-400  font-medium text-2xl mb-5 mt-5 px-5">Contact us</h1>
 
         <section class="mb-32 text-gray-800">
