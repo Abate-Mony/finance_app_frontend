@@ -1,10 +1,17 @@
-
-import { UserLayout, DashBoardLayout } from "./components";
-import { Home, ApplyService, ContactUs, Login,SingleService,
-Messages, Services,MessageBox ,Appointment,AppointmentSingle,Aboutus} from "./pages";
+import {lazy,Suspense} from 'react'
+import { UserLayout, DashBoardLayout ,Loader} from "./components";
+import {MessageBox,Messages,Home} from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { store } from "./store/appstore";
 import ScrollTo from "./withRouter"
+// const Home=lazy(()=>import("./pages/Home"));
+const Aboutus=lazy(()=>import("./pages/Aboutus"));
+const ContactUs=lazy(()=>import("./pages/Contact"));
+const Login=lazy(()=>import("./pages/Login"));
+const ApplyService=lazy(()=>import("./pages/ApplyService"));
+const Appointment=lazy(()=>import("./pages/Appointment"));
+const SingleService=lazy(()=>import("./pages/SingleService"));
+const Services=lazy(()=>import("./pages/Services"));
+const AppointmentSingle=lazy(()=>import("./pages/AppointmentSingle"));
 
 function App() {
   return (
@@ -12,10 +19,10 @@ function App() {
         {/* <Provider store={store}> */}
       <BrowserRouter>
           <ScrollTo />
+          <Suspense fallback={<Loader/>}>
           <Routes >
             <Route path="dashboard" element={<DashBoardLayout />}>
               <Route  index element={<Appointment />} />
-              {/* <Route index element={<Main />} /> */}
               <Route path="messages" element={<Messages />} />
               <Route path="messages/:id" element={<MessageBox />} />
               <Route path="services" element={<Services />} />
@@ -23,8 +30,8 @@ function App() {
               <Route path="appointment/:id" element={<AppointmentSingle />} />
               
             </Route>
-            <Route path="auth" element={<Login />} />
             <Route path="/" element={<UserLayout />}>
+            <Route path="auth" element={<Login />} />
               <Route index element={<Home />} />
               <Route path="service/:service_id" element={<ApplyService />} />
               <Route path="contact-us" element={<ContactUs />} />
@@ -34,6 +41,7 @@ function App() {
 
           </Routes>
 
+          </Suspense>
       </BrowserRouter>
         {/* </Provider> */}
     </div>

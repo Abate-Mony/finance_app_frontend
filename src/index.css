@@ -258,6 +258,6 @@ body {
     @apply absolute w-full h-full z-10 left-0 top-0 bg-blue-300 flex items-center justify-center rounded-sm;
 }
 
-.hero-swiper.swiper-slide-active {
-    @apply translate-y-[-40px] duration-500 transition-[transform] border-4 border-orange-400
+.hero-swiper .swiper-slide-active>div {
+    @apply translate-y-[-1.75rem] duration-500 transition-[transform]
 }
