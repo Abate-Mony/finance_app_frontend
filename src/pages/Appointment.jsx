@@ -1,15 +1,35 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import {actions} from '../actions/applications'
+import { actions } from '../actions/applications'
 const Appointment = () => {
     const navigate = useNavigate()
     const [applications, setApplications] = useState([]);
     const token = localStorage.getItem("admin_token");
-    console.log(token)
+ const [text,setText]=useState("")
+    const handleSubmit = async(e) => {
+        const baseUrl = process.env.REACT_APP_BASE_PROD_URL + "/application"
+    e.preventDefault()
+        try {
+            const response = await axios.get(`${baseUrl}?${categoriesArray[selected]}=${text}`, {
+                headers: {
+                    'Authorization': "mrjames " + token
+                }
+            })
+            console.log(response?.data?.applications);
+            console.log(`${baseUrl}?${categoriesArray[selected]}=${text}`)
+            setApplications([...response?.data?.applications])
+        }
+
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+
+
     const url = "https://mrjamesserviceappbackend.vercel.app/application"
 
-   
     useEffect(() => {
         try {
             async function fetchData() {
@@ -20,9 +40,9 @@ const Appointment = () => {
                 })
                 console.log(response?.data?.applications);
                 setApplications([...response?.data?.applications])
-              }
-              fetchData()
-           
+            }
+            fetchData()
+
         } catch (err) {
             console.log(err)
         }
@@ -48,14 +68,14 @@ const Appointment = () => {
     const [selected, setSelected] = useState(0)
     const categoriesArray = [
 
-        "All categories", "email", "phone", "service type", "fullnames", "age"
+        "fullname", "email", "phone", "service_type",  "age"
     ]
 
     return (
         <div className="max-w-full overflow-auto" onClick={closeDropdown}>
 
 
-            <form className="px-4 md:px-6 my-5 ">
+            <form className="px-4 md:px-6 my-5 " onSubmit={handleSubmit}>
                 <div className="flex relative min-h-[40px]">
                     <label for="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                     <button id="dropdown-button" data-dropdown-toggle="dropdown" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button"
@@ -74,7 +94,7 @@ const Appointment = () => {
                         </ul>
                     </div>
                     <div className="relative w-full">
-                        <input type="search" id="search-dropdown" className="block outline-none focus:outline-none p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Email address ,phone number,names etc " required />
+                        <input type="search" value={text} onChange={e=>setText(e.target.value)} id="search-dropdown" className="block outline-none focus:outline-none p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Email address ,phone number,names etc " required />
                         <button type="submit" className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             <span className="sr-only">Search</span>
@@ -117,17 +137,17 @@ const Appointment = () => {
 
                         {
 
-applications.map((application,index) => (<tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+                            applications.map((application, index) => (<tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
 
                             >
                                 <td className="px-2 py-4 border flex items-center justify-center">
                                     {index + 1}
                                 </td>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                 {application?.service_type}
+                                    {application?.service_type}
                                 </th>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                  {application?.fullname}
+                                    {application?.fullname}
                                 </th>
                                 <td className="px-6 py-4">
                                     <a href={`https://wa.me/237672301714`} className="font-medium cursor:pointer text-blue-500 dark:text-blue-500 hover:underline">{application?.phone}</a>
@@ -141,8 +161,8 @@ applications.map((application,index) => (<tr key={index} className="bg-white bor
                                 <td className="px-6 py-4">
                                     {application?.age}
                                 </td>
-                                <td className="px-6 py-4" onClick={() => navigate(`/dashboard/appointment/${index}`)}>
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                <td className="px-6 py-4" onClick={() => navigate(`/dashboard/appointment/${application?._id}`)}>
+                                    <a className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                 </td>
                             </tr>
                             ))

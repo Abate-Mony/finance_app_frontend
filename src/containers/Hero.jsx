@@ -7,7 +7,7 @@ const Hero = () => {
 const navigate=useNavigate();
 
   return (
-    <div className="  container mx-auto bg-color_white dark:bg-color_black ">
+    <div className=" md:text-xl container mx-auto bg-color_white dark:bg-color_black ">
       <div className="flex hero-swiper mt-5 md:flex-row-reverse lg:py-2">
         <Swiper spaceBetween={1} slidesPerView={1} onSlideChange={() =>0}
           onSwiper={(swiper) => 0}
@@ -24,7 +24,7 @@ const navigate=useNavigate();
         >
 
           <SwiperSlide>
-            <div className="mx-2   my-8 min-h-[18.75rem] rounded-lg shadow-lg overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
+            <div className="mx-2    my-8 min-h-[18.75rem] rounded-lg shadow-lg overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
 
               <div className="flex-1 p-4 relative">
                 <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">

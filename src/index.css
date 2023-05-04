@@ -90,6 +90,12 @@ body {
     }
 }
 
+@media screen and (min-width: 600px) {
+    body {
+        @apply text-xl
+    }
+}
+
 .transiton-bg-color {
     /* @apply transition; */
     cursor: pointer;

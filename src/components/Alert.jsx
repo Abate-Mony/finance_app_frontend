@@ -1,5 +1,5 @@
 
-const Alert = () => {
+const Alert = ({message,toggle,toggleModal}) => {
     return (
         <div className="h-full bg-slate-300 fixed w-full z-10 bg-opacity-75 invisible
         flex items-center justify-center ">

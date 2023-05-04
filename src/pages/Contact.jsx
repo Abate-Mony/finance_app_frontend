@@ -1,5 +1,6 @@
 import { Footer } from '../containers'
 import {NavLink} from 'react-router-dom'
+import Marquee from 'react-fast-marquee'
 const ContactUs = () => {
     return (
         <div class="container   mt-10 md:px-6 mx-auto">
@@ -15,7 +16,7 @@ const ContactUs = () => {
       <div class="flex items-center">
         <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">
-        <h1 className="text-slate-400  font-medium text-3xl ">Contact us</h1>
+        <h1 className="text-slate-400  font-medium text-2xl ">Contact us</h1>
         
         </a>
       </div>
@@ -25,14 +26,14 @@ const ContactUs = () => {
 </nav>
                 {/* <h1 className="text-slate-400  font-medium text-2xl mb-5 mt-5 px-5">Contact us</h1> */}
 
-        <section class="mb-32 text-gray-800">
+        <section class="mb-5 text-gray-800">
 
-        <h1 class="mb-4 text-4xl font-extrabold leading-none max-w-3xl tracking-tight px-5 text-gray-900 md:text-5xl lg:text-6xl dark:text-white">we wish to get back to  <span class="text-blue-600 dark:text-blue-500">you</span> </h1>
+        <h1 class="mb-4 text-2xl font-extrabold leading-none max-w-3xl tracking-tight px-5 text-gray-900 md:text-4xl lg:text-5xl dark:text-white">We wish to get back to  <span class="text-blue-600 dark:text-blue-500">you</span> </h1>
 <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 px-5 mb-6 max-w-2xl">Here at {process.env.REACT_APP_MY_APP_NAME} we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
        
           
           
-<h1 class="mb-4 px-5 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl max-w-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Send An email or Click our Social Icons</span> to get to us</h1>
+<h1 class="mb-4 px-5 text-2xl font-extrabold text-gray-900 dark:text-white md:text-3xl lg:text-5xl max-w-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Send An email or Click our Social Icons</span> to get to us</h1>
 <div className="flex items-center gap-3 px-4 my-6 mb-5 justify-center md:justify-start  cursor:pointer">
         
 <svg
@@ -253,6 +254,16 @@ const ContactUs = () => {
           </div>
       
         </section>
+        <Marquee play pauseOnClick pauseOnHover className="text-xl- text-blue-600 dark:text-blue-500 py-6 mb-4 text-xl font-extrabold leading-none tracking-tight- px-5 text-gray-900- md:text-3xl lg:text-3xl dark:text-white- max-w-5xl"> 
+
+     
+        < >please we will really like t get back to    <span class="text-blue-600 dark:text-blue-500">you</span> </>
+     
+    
+    
+
+</Marquee>
+
       <Footer/>
       </div>
         

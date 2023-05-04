@@ -48,7 +48,7 @@ const Navbar = () => {
     }
     return (
         <div className="sticky top-0 left-0 shadow-lg select-none bg-color_light  dark:bg-color_dark dark:text-white z-20">
-            <div className="container mx-auto  h-[60px] items-center  px-4 flex justify-between relative  ">
+            <div className="container mx-auto  h-[3.75rem] items-center  px-4 flex justify-between relative  ">
                 <div className="text-2xl font-montserrat cursor-pointer hover:text-slate-950 hover:font-light transition-[color] " onClick={navigateToHome}>
                     {process.env.REACT_APP_MY_APP_NAME}
 
@@ -74,7 +74,7 @@ const Navbar = () => {
 
                 <ul onClick={()=>setIsOpen(!isOpen)} className={`${!isOpen ? " max-h-0" :
                     " max-h-screen"} overflow-hidden transition-[max-height] duration-500  shadow
-                    md:hidden absolute top-[60px] left-0 bg-color_light  dark:bg-color_dark dark:text-white  w-full `}>
+                    md:hidden absolute top-[3.75rem] left-0 bg-color_light  dark:bg-color_dark dark:text-white  w-full `}>
                     <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=>navigate("/")}><a href="#our-services">Our Service</a></li>
                     <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
                         to="/about-us"
@@ -86,13 +86,13 @@ const Navbar = () => {
                     >Contact Us</NavLink></li>
                 </ul>
                 <div className='hidden md:flex gap-3 items-center'>
-                    <div className='hover:bg-slate-300  w-[40px] h-[40px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
+                    <div className='hover:bg-slate-300  w-[2.5rem] h-[2.5rem] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
                         {
                             darkTheme ? <BsMoonStars size={20} /> : <BsSun size={20} />
                         }
                     </div>
                     <div className='hover:bg-slate-300 
-                    relative  w-[40px] h-[40px] transition-bg   flex items-center justify-center rounded-full '
+                    relative  w-[2.5rem] h-[2.5rem] transition-bg   flex items-center justify-center rounded-full '
                     onClick={()=>setNotification(!notification)}
 
                    
@@ -125,7 +125,7 @@ dark:border-gray-600 dark:text-white`}>
 
                 <div className='flex md:hidden  items-center' >
                     <div className='hover:bg-slate-300 
-                    relative  w-[40px] h-[40px] transition-bg   flex items-center justify-center rounded-full ' onClick={()=>setNotification(!notification)}
+                    relative  w-[2.5rem] h-[2.5rem] transition-bg   flex items-center justify-center rounded-full ' onClick={()=>setNotification(!notification)}
 
                     >
                         <GrNotification size={20} />
@@ -154,12 +154,12 @@ dark:border-gray-600 dark:text-white`}>
                             </button>
                         </div>
                     </div>
-                    <div className='hover:bg-slate-300  w-[40px] h-[40px] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
+                    <div className='hover:bg-slate-300  w-[2.5rem] h-[2.5rem] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
                         {
                             darkTheme ? <BsMoonStars size={25} /> : <BsSun size={25} />
                         }
                     </div>
-                    <div className="md:hidden h-[40px] w-[40px] rounded-full flex items-center justify-center hover:bg-slate-300" onClick={toggleNavBar}>
+                    <div className="md:hidden h-[2.5rem] w-[2.5rem] rounded-full flex items-center justify-center hover:bg-slate-300" onClick={toggleNavBar}>
                         {
                             !isOpen ? <AiOutlineMenu size={20} /> : <IoMdClose size={27} />
 

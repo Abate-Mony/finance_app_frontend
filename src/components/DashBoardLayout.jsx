@@ -7,8 +7,6 @@ import { AiOutlineMenu } from "react-icons/ai"
 import {actions} from '../actions/toggleSide'
 import { useState } from 'react'
 const DashBoardLayout = () => {
-
-
     const dispatch = useDispatch()
     const isOpen = useSelector((state) => state.sidebar.isOpen)
     const toggleSideBar = () =>{

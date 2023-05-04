@@ -30,16 +30,14 @@ const ChatBox = () => {
     return (
         <div className={`fixed   w-full h-[100vh] chat-container- bg-slate-400 z-20 bg-opacity-5 active `}  onClick={toggleChat}>
 
-            <div onClick={e => e.stopPropagation()} className={` chat-sm-container cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
-                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar" style={{
-                    height: "calc(100% - 50px)" 
-                }} ref={scrollRef}>
+            <div onClick={e => e.stopPropagation()} className={` chat-sm-container border-2 border-oranage-400 cal-width shadow-2xl chat-height rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
+                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar border-4 border-red-500 h-[calc(100svh-3rem)]"ref={scrollRef}>
 
                     {
                         arr.length < 1 ? <div className="h-full w-full flex flex-col items-center justify-center">
 
                             <p className="text-lg font-manrope uppercase">no new messages</p>
-                            <p className="text-xl font-manrope uppercase">say Hi</p>
+                            <p className="text-xl font-manrope uppercase">say Hello</p>
 
                         </div> :
 

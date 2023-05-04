@@ -3,7 +3,6 @@ import { UserLayout, DashBoardLayout ,Loader} from "./components";
 import {MessageBox,Messages,Home} from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollTo from "./withRouter"
-// const Home=lazy(()=>import("./pages/Home"));
 const Aboutus=lazy(()=>import("./pages/Aboutus"));
 const ContactUs=lazy(()=>import("./pages/Contact"));
 const Login=lazy(()=>import("./pages/Login"));
@@ -16,7 +15,6 @@ const AppointmentSingle=lazy(()=>import("./pages/AppointmentSingle"));
 function App() {
   return (
     <div className="bg-color_light min-h-screen text-slate-700 dark:text-white dark:bg-color_dark">
-        {/* <Provider store={store}> */}
       <BrowserRouter>
           <ScrollTo />
           <Suspense fallback={<Loader/>}>
@@ -36,7 +34,6 @@ function App() {
               <Route path="service/:service_id" element={<ApplyService />} />
               <Route path="contact-us" element={<ContactUs />} />
               <Route path="about-us" element={<Aboutus />} />
-              {/* <Route path="information" element={<Info />} /> */}
             </Route>
 
           </Routes>

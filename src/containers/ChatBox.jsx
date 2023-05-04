@@ -64,7 +64,7 @@ const ChatBox = () => {
         <div className={`fixed  w-full h-[100vh] chat-container bg-slate-400 z-20 bg-opacity-5 ${isOpen ? "active" : ""}`} onClick={toggleChat}>
 
             <div onClick={e => e.stopPropagation()} className={` chat-sm-container w-[20rem] max-w-[calc(100vw-2.5rem)]   shadow-2xl  rounded-md overflow-hidden ml-auto  mt-4 bg-white`}>
-                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar h-[calc(100vh-15rem)] "
+                <div className=" py-5 overflow-y-auto overflow-x-hidden swiper-scrollbar h-[calc(100svh-10rem)] "
                     ref={scrollRef}>
 
                     {
