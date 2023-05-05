@@ -30,6 +30,7 @@ const CheckOut = () => {
     const [options, setOptions] = useState([]);
     const btn = useRef(null);
     const p = useRef(null);
+    const [toggle,setToggle]=useState(false)
     useEffect(() => {
         const _options = Object.values(countryListAlpha2).map((item) => ({
             value: item, label: item
@@ -58,6 +59,12 @@ const CheckOut = () => {
         setSelected(null)
         setActive(false)
         console.log("resting value")
+        setToggle(true)
+        sideContainer.current.scrollTo({
+            top: 100000,
+            behavior: "smooth"
+        })
+
     }
     useEffect(() => {
         sideContainer.current.scrollTo({
@@ -85,6 +92,7 @@ const CheckOut = () => {
             })
             console.log(response)
             reset()
+            
 
         } catch (err) {
             console.log(err)
@@ -102,12 +110,12 @@ const CheckOut = () => {
     return (
 
         <div className='flex container mx-auto  overflow-y-hidden'>
-            <Alert />
-            <div className="hidden lg:block mb-[100px] md:mb-0 md:w-8/12 lg:w-6/12">
+            <Alert toggle={toggle} setToggle={setToggle} />
+            <div className="hidden lg:block mb-[100px] max-h-[calc(100vh-60px)] md:mb-0 md:w-8/12 lg:w-6/12">
                 <img
                     // src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                     src={appimage}
-                    className="w-full min-h-[calc(100vh-60px)]"
+                    className="w-full h-full"
                     alt="Phone image" />
             </div>
             <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4" ref={sideContainer}>

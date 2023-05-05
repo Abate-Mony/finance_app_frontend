@@ -267,3 +267,25 @@ body {
 .hero-swiper .swiper-slide-active>div {
     @apply translate-y-[-1.75rem] duration-500 transition-[transform]
 }
+
+.modal {
+    @apply -top-[100%];
+}
+
+.modal.active {
+    @apply top-[4rem]
+}
+
+.modal.active .progress {
+    animation-name: progress;
+    animation-duration: 5s;
+}
+
+@keyframes progress {
+    from {
+        @apply w-0
+    }
+    to {
+        @apply w-full
+    }
+}

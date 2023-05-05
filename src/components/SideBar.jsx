@@ -41,6 +41,13 @@ const SideBar = () => {
       , to: "services"
 
     },
+    {
+
+      name: "Contacts",
+      icon: <GrServicePlay size={25} />
+      , to: "services"
+
+    },
 
 
 
