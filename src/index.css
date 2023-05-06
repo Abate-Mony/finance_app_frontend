@@ -179,7 +179,7 @@ body {
 
 .cal-width {
     --w: 400px;
-    width: min(var(--w), calc(100vw - 2.5rem));
+    max-width: min(var(--w), calc(100vw - 2.5rem));
 }
 
 .scale-info {
@@ -279,6 +279,22 @@ body {
 .modal.active .progress {
     animation-name: progress;
     animation-duration: 5s;
+}
+
+.icons-container .icon {
+    @apply scale-0 rotate-90
+}
+
+.icons-container .icon.active {
+    animation-name: spinicon;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes spinicon {
+    to {
+        @apply scale-125 rotate-0
+    }
 }
 
 @keyframes progress {

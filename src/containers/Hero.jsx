@@ -7,7 +7,7 @@ const Hero = () => {
 const navigate=useNavigate();
 
   return (
-    <div className=" md:text-xl container mx-auto bg-color_white dark:bg-color_black ">
+    <div className=" md:text-xl font-manrope container mx-auto bg-color_white dark:bg-color_black ">
       <div className="flex hero-swiper mt-5 md:flex-row-reverse lg:py-2">
         <Swiper spaceBetween={1} slidesPerView={1} onSlideChange={() =>0}
           onSwiper={(swiper) => 0}
@@ -24,15 +24,15 @@ const navigate=useNavigate();
         >
 
           <SwiperSlide>
-            <div className="mx-2    my-8 min-h-[18.75rem] rounded-lg shadow-lg overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
+            <div className="mx-2    my-8 min-h-[18.75rem]- rounded-lg shadow-lg overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
 
               <div className="flex-1 p-4 relative">
-                <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">
+                <h1 className="text-xl md:text-2xl font-manrope leading-5 font-semibold mb-2">
                   We focus on <br className="md:hidden" />
                   Your Story
 
                 </h1>
-                <p className="my-4 leading-[1.5] md:text-lg lg:text-xl ">
+                <p className="my-4 leading-5 md:text-lg lg:text-xl ">
                   We know you live your life to the fullest we just help you plan for it.
                   Because making the right decision matters in life.
 
@@ -60,16 +60,16 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
             </div>
           </SwiperSlide>
           <SwiperSlide> {/*  */}
-            <div className="mx-2 my-8 min-h-[18.75rem] rounded-lg shadow-lg before:bg-orange-400 
+            <div className="mx-2 my-8 min-h-[18.75rem]- rounded-lg shadow-lg before:bg-orange-400 
                after:bg-orange-400 overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
 
               <div className="flex-1 p-4 relative">
-                <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">
+                <h1 className="text-xl md:text-2xl font-manrope leading-5 font-semibold mb-2">
                   We make you choose <br className="md:hidden" />
                  the right path
 
                 </h1>
-                <p className="my-4 leading-[1.7] md:text-lg lg:text-xl">
+                <p className="my-4 leading-5 md:text-lg lg:text-xl">
 
                   We know you live your life to the fullest we just help you plan for it.
                   Because making the right decision matters in life.
@@ -99,15 +99,15 @@ onClick={()=>navigate("/service/self growth")}
             </div>
             {/*  */}</SwiperSlide>
           <SwiperSlide> {/*  */}
-            <div className="mx-2 my-8 min-h-[18.75rem] rounded-lg shadow-lg before:bg-blue-400 after:bg-blue-400 overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
+            <div className="mx-2 my-8 min-h-[18.75rem]- rounded-lg shadow-lg before:bg-blue-400 after:bg-blue-400 overflow-hidden relative bg-white dark:bg-slate-800 md:px-0 slide flex">
 
               <div className="flex-1 p-4 relative">
-                <h1 className="text-xl md:text-2xl font-manrope leading-[1.4] font-semibold mb-2">
+                <h1 className="text-xl md:text-2xl font-manrope leading-5 font-semibold mb-2">
                   The results speaks  <br className="md:hidden" />
             for themeselves
 
                 </h1>
-                <p className="my-4 leading-[1.7] md:text-lg lg:text-xl">
+                <p className="my-4 leading-5 md:text-lg lg:text-xl">
 
 
                   We know you live your life to the fullest we just help you plan for it.
@@ -141,7 +141,7 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
         </Swiper>
 
         <div className="flex-none  hidden md:w-[18.75rem] lg:w-[31.25rem] md:block  py-6">
-          <h1 className="text-2xl gradient__text mb-3 md:mb-6  lg:text-3xl leading-[1.4] lg:leading-[1.2] font-montserrat  rounded-sm font-bold px-4 ">Help your <br />  <span className="text-blue-400"> Businesses </span> growth <br />
+          <h1 className="text-2xl gradient__text mb-3 md:mb-6  lg:text-3xl leading-5 lg:leading-[1.2] font-montserrat  rounded-sm font-bold px-4 ">Help your <br />  <span className="text-blue-400"> Businesses </span> growth <br />
             up to
             <span className='text-blue-500 underline italic ml-4'> high level</span>
           </h1>

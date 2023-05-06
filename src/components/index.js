@@ -22,3 +22,5 @@ export { default as Loader }
 from "./Load"
 export { default as Alert }
 from "./Alert"
+export { default as AddBtn }
+from "./AddBtn"

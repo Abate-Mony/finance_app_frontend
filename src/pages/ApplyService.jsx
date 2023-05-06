@@ -31,25 +31,37 @@ const CheckOut = () => {
     const btn = useRef(null);
     const p = useRef(null);
     const [toggle,setToggle]=useState(false)
-    useEffect(() => {
-        const _options = Object.values(countryListAlpha2).map((item) => ({
-            value: item, label: item
+   
 
-        }));
-        setOptions([..._options]);
+   
 
-        const _btn = btn.current
-        const _p = p.current;
 
-        sideContainer.current.addEventListener("scroll", function () {
-            if (_btn && _p) {
-                // const top = _p.getBoundingClientRect().bottom
-                // if (top > window.innerHeight) return setFx(false)
-                // return setFx(true)
+        useEffect(() => {
+            const _options = Object.values(countryListAlpha2).map((item) => ({
+                value: item, label: item
+    
+            }));
+            setOptions([..._options]);
+            sideContainer.current.addEventListener("scroll", function () {
+                if (btn.current) {
+                    if ((p.current.getBoundingClientRect().top) > (window.innerHeight - 20)) {
+                        if (!btn.current.classList.contains("fixed")) {
+                            btn.current.classList.add("fixed","translate-x-[-50%]")
+                        }
+                    }else{
+                        btn.current.classList.remove("fixed","translate-x-[-50%]")
+                    }
+                }
+    
+            })
+    
+    
+            return () => {
+    
             }
-        })
-
-    }, [])
+        }, [])
+    
+       
     const reset = () => {
         setAge("")
         setFullName("")
@@ -113,7 +125,6 @@ const CheckOut = () => {
             <Alert toggle={toggle} setToggle={setToggle} />
             <div className="hidden lg:block mb-[100px] max-h-[calc(100vh-60px)] md:mb-0 md:w-8/12 lg:w-6/12">
                 <img
-                    // src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                     src={appimage}
                     className="w-full h-full"
                     alt="Phone image" />
@@ -121,15 +132,11 @@ const CheckOut = () => {
             <div className="md:w-8/12  lg:w-5/12 md:mx-auto pb-[100px] max-h-[calc(100vh-60px)] scroll-bar pt-10 overflow-y-auto h-screen px-4" ref={sideContainer}>
 
                 <div className="flex-1">
-
-                    <div className="bg-blue-400 bg-opacity-75 flex py-2 shadow-lg  rounded-md  gap-4 ">
+                    <div className="bg-blue-400 bg-opacity-75 flex items-center py-2 shadow-lg  rounded-md  gap-4 ">
                         <div className="flex-none ml-2 w-[1.875rem] mr-1 h-[1.875rem] flex items-center rounded-full hover:bg-slate-100 duration-300 transition-colors" onClick={() => navigate("/")}><BsChevronLeft size={25} /></div>
                         <div className="flex-1">
-                            <h1 className="text-lg md:text-xl text-center- leading-5  md:text-start"><span className='gradient__text- font-medium'>{service_id === "no-service-selected" ? "no selected" : service_id}</span></h1>
-                            <p></p>
+                            <h1 className="text-sm font-manrope text-white md:text-xl text-center- leading-5  md:text-start"><span className='gradient__text- font-[300] capitalize'>{service_id === "no-service-selected" ? "no selected" : service_id}</span></h1>
                         </div>
-                        {/* <div className="flex-none"></div> */}
-
                     </div>
                     <h1 className="font-[500] text-lg md:text-xl mt-4 leading-[3] flex items-center gap-2 uppercase"><span>Select date</span> <CiTimer size={25} /> </h1>
 
@@ -149,13 +156,14 @@ const CheckOut = () => {
                         {
                             availableTimes.map((time, i) => (<div key={i} className="w-1/3  flex justify-center px-2 py-2 ">
 
-                                <button type="button" class={` text-xs mx-auto transition-colors duration-500 ${selected === i ? "bg-blue-800  text-white shadow-2xl " : "text-blue-700"}
+                                <button type="button"
+                                class={` text-xs mx-auto transition-colors duration-500 ${selected === i ? "bg-blue-800  text-white shadow-2xl " : "text-blue-700"}
                                 hover:text-white border border-blue-700
                                 hover:bg-blue-800
                                 focus:ring-4 
                                 focus:outline-none
                                 focus:ring-blue-300 font-medium rounded-lg
-                                px-5 py-2 text-center 
+                                px-5 py-1 text-center 
                                 dark:border-blue-500 dark:text-blue-500
                                 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800`}
                                     onClick={() => {
@@ -177,7 +185,7 @@ const CheckOut = () => {
                 items-center gap-2 uppercase"><span>Select Country</span> <CiTimer size={25} /> </h1>
 
                 <Select className="dark:text-black" options={options} onChange={(e) => e} />
-                <form className='px-4 py-5 shadow-md' onSubmit={handleSubmit} ref={p}>
+                <form className='px-4 py-5 shadow-md' onSubmit={handleSubmit} >
 
 
                     <div className="relative mb-6" data-te-input-wrapper-init>
@@ -464,14 +472,14 @@ const CheckOut = () => {
                         value={message}
                         onChange={e => setMessage(e.target.value)}
 
-                        rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                        rows="4" class="block mb-4 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
                     <span className={`py-4 text-2xl mx-auto block text-center ${error ? "block" : "hidden"}`}>{error}</span>
                     <button ref={btn}
                         type="submit"
                         a data-te-ripple-init
-                        data-te-ripple-color="light"
-                        className={` task-btn ${active ? "active" : ""}
-  inline-block rounded ${fx ? "block mt-4 w-full" : "fixed translate-x-[-50%]"} bottom-4 left-[50%] z-10  md:hidden w-[400px] max-w-[90vw]   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
+                        data-te-ripple-color="light" style={{"--w":"200px"}}
+                        className={` task-btn ${active ? "active" : ""}  w-full-
+  inline-block rounded  fixed-   bottom-4 left-[50%] z-10  md:hidden cal-width max-w-[90vw]-   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
 leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition- duration-150-
 ease-in-out hover:bg-primary-600 mx-auto
 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
@@ -479,6 +487,7 @@ focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18p
 focus:outline-none focus:ring-0 active:bg-primary-700
 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
 dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]`}
+                    
                     >
                         Confirm Appointment
                     </button>
@@ -503,24 +512,23 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                     </div>
 
                 </form>
-                <h1 className="text-xl md:text-2xl font-manrope uppercase text-center gradient__text mt-10 mb-4">{service_id} </h1>
-                <p  className="text-lg md:text-xl  ">Our service for <span className="gradient__text"> {service_id}</span> is design to make the best out of the best in a way the user
+                <h1 className="text-xl md:text-2xl font-manrope uppercase text-center gradient__text mt-10 mb-4" ref={p}>{service_id} </h1>
+                <p  className="text-sm md:text-lg lg:text-lg  ">Our service for <span className="gradient__text" > {service_id}</span> is design to make the best out of the best in a way the user
                     ake your financial ability to the next level with our coaching advice and ideas for a better tomorrow
 
                 </p>
 
-                <h1 className="text-lg md:text-xl text-center md:text-start uppercase mb-4 gradient__text font-medium ">related services</h1>
+                <h1 className="text-lg mt-4 md:text-xl text-center md:text-start uppercase mb-4 gradient__text font-medium ">related services</h1>
                 {
-
-                    menulist.slice(3).sort(() => 0.5 - Math.random()).map((item, index) => item !== service_id ? (<div
+                    menulist.slice(3).sort(() => 0.5 - Math.random()).map((item, index) => item.service_name !== service_id ? (<div
                         onClick={() => {
                             setUpdate(Math.random());
-                            navigate(`/service/${item}`)
+                            navigate(`/service/${item?.service_name}`)
                         }}
-                        className="bg-green-300 px-6 w-fit mb-2 py-2 inline-block mx-4 rounded-md" key={index}>{item} </div>) : "")
+                        className="bg-green-300 px-6 w-fit mb-2 py-2 inline-block mx-4 rounded-md" key={index}>{item?.service_name} </div>) : "not found")
                 }
             </div>
-            <div className="mb-[200px]" />
+            <div className="mb-[8rem]" />
 
         </div>
     )

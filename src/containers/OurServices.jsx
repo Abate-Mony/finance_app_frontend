@@ -13,7 +13,7 @@ import { ServiceGroup } from "./";
 const OurServices = () => {
     return (
         <div className='container mx-auto py-10 my-5 px-2 overflow-hidden rounded-lg bg-color_white dark:bg-color_black ' id="our-services">
-            <h1 className="text-2xl text-center mb-2 gradient__text font-semibold">Our Services</h1>
+            <h1 className="text-xl md:text-2xl font-montserrat text-center mb-2 gradient__text font-semibold">Our Services</h1>
             <span className="h-[5px] w-[100px] bg-red-400 block mb-4 mx-auto rounded-lg "></span>
         
 <ServiceGroup

@@ -68,7 +68,7 @@ export default function App() {
                             flex: "none"
                         }} className={`font-sm uppercase text-xs md:text-sm pb-2 links-item  cursor-pointer text-center fw-semibold font-manrope `} onClick={() => {
                         }}>
-                            {item}
+                            {item?.service_name || "no service"}
                         </p>
                     </SwiperSlide>))}
                 </Swiper>
@@ -104,67 +104,35 @@ export default function App() {
 
                             </div>
                             <div className="flex-1 px-2 my-5 md:mt-0">
-                                <div className="text-xl">
-                                    <span className="text-orange-400"> {item} Services </span>
+                                <div className="text-lg md:text-xl">
+                                    <span className="text-orange-400"> {item?.service_name} Services </span>
                                     are  design to accomdate a variaty of individuals  and business all around the world
                                     <ol class="border-l text-sm border-neutral-300 dark:border-neutral-500">
-                                        <li>
-                                            <div class="flex-start flex items-center pt-3">
-                                                <div
-                                                    class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
-                                                    01.07.2021
-                                                </p> */}
-                                            </div>
-                                            <div class="mb-6 ml-4 mt-2">
-                                                <h4 class="mb-1.5 text-lg font-semibold">Founding budget and coaching </h4>
-                                                <p class="mb-3 text-neutral-500 dark:text-neutral-300">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-
-                                                </p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="flex-start flex items-center pt-2">
-                                                <div
-                                                    class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
-                                                    13.09.2021
-                                                </p> */}
-                                            </div>
-                                            <div class="mb-6 ml-4 mt-2">
-                                                <h4 class="mb-1.5 text-lg font-semibold">financial and planning </h4>
-                                                <p class="mb-3 text-neutral-500 dark:text-neutral-300">
-                                                    Libero expedita explicabo eius fugiat quia aspernatur autem
-                                                </p>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="flex-start flex items-center pt-2">
-                                                <div
-                                                    class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
-                                                {/* <p class="text-sm text-neutral-500 dark:text-neutral-300">
-                                                    25.11.2021
-                                                </p> */}
-                                            </div>
-                                            <div class="ml-4 mt-2 pb-5">
-                                                <h4 class="mb-1.5 text-lg font-semibold">porfolio management for all business and personal acounts </h4>
-                                                <p class="mb-3 text-neutral-500 dark:text-neutral-300">
-                                                    Voluptatibus temporibus esse illum eum aspernatur, fugiat suscipit
-                                                    natus! Eum corporis illum nihil officiis tempore. Excepturi illo
-
-                                                </p>
-                                            </div>
-                                        </li>
+                                        
+                                       {
+                                       item?.description?.map(({title,text},index)=>(<li>
+                                        <div class="flex-start flex items-center pt-3" key={index}>
+                                            <div
+                                                class="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-neutral-300 dark:bg-neutral-500"></div>
+                                    
+                                        </div>
+                                        <div class="mb-4 ml-4 mt-2">
+                                            <h4 class="mb-1.5 text-lg md:text-lg font-semibold">{title} </h4>
+                                            <p class="mb-2 text-neutral-500 dark:text-neutral-300">
+                                            {text}
+                                            </p>
+                                        </div>
+                                    </li>
+))
+                                       
+                                       }
                                     </ol>
                                     <motion.button      
                                     variants={animateOpacity}
                                     initial={"offscreen"}
                                     whileInView={"onscreen"}
                                     
-                                    onClick={()=>gotoservicepage(item)}
+                                    onClick={()=>gotoservicepage(item.service_name)}
                                         type="button"
                                         a data-te-ripple-init
                                         data-te-ripple-color="light"
