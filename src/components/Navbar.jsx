@@ -3,10 +3,15 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { IoMdClose } from 'react-icons/io'
 import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { GrNotification } from 'react-icons/gr';
+import { BsSearch } from 'react-icons/bs'
 import { useNavigate, NavLink } from 'react-router-dom';
 const Navbar = () => {
     useEffect(() => {
-
+        window.addEventListener("scroll", () => {
+            if (isOpen) {
+                setIsOpen(false)
+            }
+        })
         if (localStorage.theme === 'white') {
             setDarkTheme(false)
             return
@@ -21,6 +26,7 @@ const Navbar = () => {
             setDarkTheme(false)
 
         }
+
     }, [])
     const [notification, setNotification] = useState(false)
     const navigate = useNavigate()
@@ -51,41 +57,54 @@ const Navbar = () => {
             <div className="container mx-auto  h-[3.75rem] items-center  px-4 flex justify-between relative  ">
                 <div className="text-2xl font-montserrat cursor-pointer hover:text-slate-950 hover:font-light transition-[color] " onClick={navigateToHome}>
                     {process.env.REACT_APP_MY_APP_NAME}
-
-
                 </div>
                 <ul className="hidden flex-col md:flex-row  md:flex items-center">
-                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=>navigate("/")}><a href="#our-services">Our Service</a></li>
+                    <li className='links-item  mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={() => navigate("/")}><a href="#our-services">Our Service</a></li>
                     <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
                         to="/about-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
-                    >About Us</NavLink></li> <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'><NavLink
+                    >About Us</NavLink></li> <li className='links-item mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300'>
+                    <NavLink
                         to="/contact-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
                     >Contact Us</NavLink></li>
-
                 </ul>
 
-
-
-
-
-
-
-                <ul onClick={()=>setIsOpen(!isOpen)} className={`${!isOpen ? " max-h-0" :
+                <ul className={`${!isOpen ? " max-h-0" :
                     " max-h-screen"} overflow-hidden transition-[max-height] duration-500  shadow
                     md:hidden absolute top-[3.75rem] left-0 bg-color_light  dark:bg-color_dark dark:text-white  w-full `}>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=>navigate("/")}><a href="#our-services">Our Service</a></li>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
+                    <li className='links-item-  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' >
+                        <form className="px-1 my-2 rounded-l-lg overflow-hidden" onSubmit={e=>e.preventDefault()}>
+                            <div className="flex relative min-h-[40px] rounded-l-lg">
+                                <label for="search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
+                                <div className="relative w-full">
+                                    <input type="search" id="search-dropdown" className="block outline-none focus:outline-none p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Services " required />
+                                    <button type="submit" className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                        <span className="sr-only">Search</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2  my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={() => {
+                        navigate("/");
+                        setIsOpen(!isOpen)
+                    }}><a href="#our-services">Our Service</a></li>
+                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=> setIsOpen(!isOpen)}><NavLink
                         to="/about-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
                     >About Us</NavLink></li>
-                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' ><NavLink
+                    <li className='links-item  border-b-2 mx-4 md:mx-2 my-4 md:my-0 text-lg hover:cursor-pointer hover:text-blue-600 transition-colors duration-300' onClick={()=> setIsOpen(!isOpen)}><NavLink
                         to="/contact-us"
                         className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "text-blue-500" : ""}
                     >Contact Us</NavLink></li>
+                   
                 </ul>
                 <div className='hidden md:flex gap-3 items-center'>
+                <div className='hover:bg-slate-300  w-[2.5rem] h-[2.5rem] transition-bg flex items-center justify-center rounded-full ' >
+                       <BsSearch size={20}/>
+                    </div>
                     <div className='hover:bg-slate-300  w-[2.5rem] h-[2.5rem] transition-bg flex items-center justify-center rounded-full ' onClick={toggleDarkTheme}>
                         {
                             darkTheme ? <BsMoonStars size={20} /> : <BsSun size={20} />
@@ -93,9 +112,9 @@ const Navbar = () => {
                     </div>
                     <div className='hover:bg-slate-300 
                     relative  w-[2.5rem] h-[2.5rem] transition-bg   flex items-center justify-center rounded-full '
-                    onClick={()=>setNotification(!notification)}
+                        onClick={() => setNotification(!notification)}
 
-                   
+
                     >
                         <GrNotification size={20} />
                         <div class={`w-48 absolute top-[52px] ${notification ? "max-h-screen border" : "max-h-0"}  overflow-hidden transition-[max-height] duration-700
@@ -125,7 +144,7 @@ dark:border-gray-600 dark:text-white`}>
 
                 <div className='flex md:hidden  items-center' >
                     <div className='hover:bg-slate-300 
-                    relative  w-[2.5rem] h-[2.5rem] transition-bg   flex items-center justify-center rounded-full ' onClick={()=>setNotification(!notification)}
+                    relative  w-[2.5rem] h-[2.5rem] transition-bg   flex items-center justify-center rounded-full ' onClick={() => setNotification(!notification)}
 
                     >
                         <GrNotification size={20} />

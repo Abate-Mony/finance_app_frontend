@@ -96,12 +96,10 @@ export default function App() {
                 {
 
                     menulist.map((item, index) => (<SwiperSlide key={index}>
-                        <div className="flex md:px-2 lg:px-6 md:pt-6 md:gap-2 lg:gap-4">
+                        <div className="flex md:px-2 lg:px-6 md:pt-6 md:gap-2 lg:gap-4 items-center">
 
-                            <div className="hidden md:block w-[300px] lg:w-[500px]">
-
-<img src="https://th.bing.com/th/id/OIP.pA1W6gV9KG94cCMwj1WRTgHaE8?pid=ImgDet&rs=1" className="h-full rounded-sm w-full objective-fit" alt="finance" />
-
+                            <div className="hidden md:block w-[300px] h-[25rem] lg:w-[500px] overflow-hidden">
+<img src={item.imgUrl || "https://th.bing.com/th/id/OIP.pA1W6gV9KG94cCMwj1WRTgHaE8?pid=ImgDet&rs=1"} className="h-full rounded-sm w-full objective-fit" alt="finance" />
                             </div>
                             <div className="flex-1 px-2 my-5 md:mt-0">
                                 <div className="text-lg md:text-xl">

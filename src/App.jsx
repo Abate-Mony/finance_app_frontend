@@ -24,7 +24,7 @@ function App() {
               <Route path="messages" element={<Messages />} />
               <Route path="messages/:id" element={<MessageBox />} />
               <Route path="services" element={<Services />} />
-              <Route path="services:/id" element={<SingleService/>} />
+              <Route path="services/:id" element={<SingleService/>} />
               <Route path="appointment/:id" element={<AppointmentSingle />} />
               
             </Route>

@@ -1,7 +1,7 @@
 
 const SingleService = () => {
   return (
-    <div>SingleService</div>
+    <div className="text-2xl text-black">SingleService</div>
   )
 }
 

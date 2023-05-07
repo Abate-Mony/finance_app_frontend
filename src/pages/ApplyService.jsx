@@ -42,6 +42,7 @@ const CheckOut = () => {
     
             }));
             setOptions([..._options]);
+            return
             sideContainer.current.addEventListener("scroll", function () {
                 if (btn.current) {
                     if ((p.current.getBoundingClientRect().top) > (window.innerHeight - 20)) {
@@ -477,10 +478,10 @@ const CheckOut = () => {
                     <button ref={btn}
                         type="submit"
                         a data-te-ripple-init
-                        data-te-ripple-color="light" style={{"--w":"200px"}}
-                        className={` task-btn ${active ? "active" : ""}  w-full-
-  inline-block rounded  fixed-   bottom-4 left-[50%] z-10  md:hidden cal-width max-w-[90vw]-   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
-leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition- duration-150-
+                        data-te-ripple-color="light"
+                        className={` task-btn ${active ? "active" : ""}  [--w:40rem]
+  inline-block rounded  fixed -translate-x-1/2   bottom-4 left-[50%] z-10  md:hidden cal-width max-w-[90vw]-   bg-blue-400 px-6 pb-2 pt-2.5  my-4 mt-0 text-xs font-medium uppercase
+leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150
 ease-in-out hover:bg-primary-600 mx-auto
 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
 focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
@@ -525,7 +526,7 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
                             setUpdate(Math.random());
                             navigate(`/service/${item?.service_name}`)
                         }}
-                        className="bg-green-300 px-6 w-fit mb-2 py-2 inline-block mx-4 rounded-md" key={index}>{item?.service_name} </div>) : "not found")
+                        className="bg-green-300 select-none px-6 w-fit mb-2 py-2 inline-block mx-4 rounded-md" key={index}>{item?.service_name} </div>) : "")
                 }
             </div>
             <div className="mb-[8rem]" />

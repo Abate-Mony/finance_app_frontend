@@ -1,7 +1,16 @@
+import  finance from './images/finance.jpg';
+import  education from './images/education.jpg';
+import  investment from './images/investment.jpg';
+import  literacy from './images/literacy.svg';
+import  communication from './images/communication.jpg';
+import  familyplainning from './images/familyplainning.jpg';
+import  booker from './images/booker.jpg';
+import  debts from './images/debts.jpg';
+
 const menulist = [
     {
         service_name: "finance work",
-        imgUrl: "",
+        imgUrl:finance,
         description: [
             {
                 title: "market and finance",
@@ -18,7 +27,7 @@ const menulist = [
     },
     {
         service_name: "literacy",
-        imgUrl: "",
+        imgUrl:literacy,
         description: [
             {
                 title: "literacy classes are design",
@@ -35,7 +44,7 @@ const menulist = [
     },
     {
         service_name: "Education",
-        imgUrl: "",
+        imgUrl: education,
         description: [
             {
                 title: "education frame work",
@@ -51,8 +60,8 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
-        imgUrl: "",
+        service_name: "Investment",
+        imgUrl: investment,
         description: [
             {
                 title: "education frame work",
@@ -68,8 +77,8 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
-        imgUrl: "",
+        service_name: "Communication",
+        imgUrl: communication,
         description: [
             {
                 title: "education frame work",
@@ -85,8 +94,8 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
-        imgUrl: "",
+        service_name: "Family planning",
+        imgUrl: familyplainning,
         description: [
             {
                 title: "education frame work",
@@ -102,8 +111,8 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
-        imgUrl: "",
+        service_name: "Booking",
+        imgUrl: booker,
         description: [
             {
                 title: "education frame work",
@@ -136,8 +145,8 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
-        imgUrl: "",
+        service_name: "Money Planning",
+        imgUrl: debts,
         description: [
             {
                 title: "education frame work",
