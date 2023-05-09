@@ -9,7 +9,7 @@ import  debts from './images/debts.jpg';
 
 const menulist = [
     {
-        service_name: "finance work",
+        service_name: "Website Building",
         imgUrl:finance,
         description: [
             {
@@ -26,7 +26,7 @@ const menulist = [
 
     },
     {
-        service_name: "literacy",
+        service_name: "SEO and Google ranking",
         imgUrl:literacy,
         description: [
             {
@@ -43,7 +43,7 @@ const menulist = [
 
     },
     {
-        service_name: "Education",
+        service_name: "Graphics designing",
         imgUrl: education,
         description: [
             {
@@ -60,7 +60,7 @@ const menulist = [
 
     },
     {
-        service_name: "Investment",
+        service_name: "Account Boosting",
         imgUrl: investment,
         description: [
             {
@@ -77,7 +77,7 @@ const menulist = [
 
     },
     {
-        service_name: "Communication",
+        service_name: "Social Media review",
         imgUrl: communication,
         description: [
             {
@@ -94,7 +94,7 @@ const menulist = [
 
     },
     {
-        service_name: "Family planning",
+        service_name: "Sales of accounts",
         imgUrl: familyplainning,
         description: [
             {
@@ -111,7 +111,7 @@ const menulist = [
 
     },
     {
-        service_name: "Booking",
+        service_name: "Booking ",
         imgUrl: booker,
         description: [
             {
@@ -128,7 +128,7 @@ const menulist = [
 
     },,
     {
-        service_name: "Education",
+        service_name: "Phone Flashing and decoding",
         imgUrl: "",
         description: [
             {
@@ -145,7 +145,7 @@ const menulist = [
 
     },
     {
-        service_name: "Money Planning",
+        service_name: "Buying crypto Currency",
         imgUrl: debts,
         description: [
             {

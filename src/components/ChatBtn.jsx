@@ -6,8 +6,6 @@ const ChatBtn = () => {
   const isOpen = useSelector(state => state.chatbox.isOpen)
   const dispatch = useDispatch()
   const toggleChat = () => {
-    // console.log(isOpen)
-
     dispatch(actions.toggleChatBox())
   }
   return (

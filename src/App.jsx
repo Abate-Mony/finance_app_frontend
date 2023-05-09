@@ -11,6 +11,7 @@ const Appointment=lazy(()=>import("./pages/Appointment"));
 const SingleService=lazy(()=>import("./pages/SingleService"));
 const Services=lazy(()=>import("./pages/Services"));
 const AppointmentSingle=lazy(()=>import("./pages/AppointmentSingle"));
+const ContactServicePage=lazy(()=>import("./pages/ContactServicePage"));
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path="service/:service_id" element={<ApplyService />} />
               <Route path="contact-us" element={<ContactUs />} />
               <Route path="about-us" element={<Aboutus />} />
+              <Route path="services" element={<ContactServicePage/>} />
             </Route>
 
           </Routes>

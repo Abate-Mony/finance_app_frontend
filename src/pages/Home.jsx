@@ -54,14 +54,22 @@ return (
     <Advert />
     <OurServices />
     <div className="max-w-[50rem] shadow-2xl mx-4  px-2 md:mx-auto pb-6 z-1  mt-[3rem] rounded-lg  relative   bg-color_white dark:bg-color_black">
-      <div
+      <motion.div
+      
+      initial={{ opacity: 0, scale: 0.5,x:"-2.5rem" }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}
         className=" bg-slate-400 w-[5rem] h-[5rem] mx-auto rounded-full shadow-xl peer overflow-hidden translate-y-[-2.5rem] 
         ">
 
         <img src="https://web-assets.zendesk.com/images/p-contact-us/avatar1.svg" alt="user" className="h-full w-full hover:scale-110 duration-700 transition-[scale] scale-105 peer-hover:scale-125" />
 
 
-      </div>
+      </motion.div>
 
 
       <motion.h1

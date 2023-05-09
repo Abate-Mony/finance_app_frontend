@@ -3,12 +3,18 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
 // import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
+import {motion} from  "framer-motion"
 const Hero = () => {
 const navigate=useNavigate();
 
   return (
     <div className=" md:text-xl font-manrope container mx-auto bg-color_white dark:bg-color_black ">
-      <div className="flex hero-swiper mt-5 md:flex-row-reverse lg:py-2">
+      <motion.div
+      initial={{y:10,opacity:0,x:-100}}
+      whileInView={{y:0,opacity:1,x:0}}
+      transition={{duration:0.5}}
+      
+      className="flex hero-swiper mt-5 md:flex-row-reverse lg:py-2">
         <Swiper spaceBetween={1} slidesPerView={1} onSlideChange={() =>0}
           onSwiper={(swiper) => 0}
           modules={
@@ -150,7 +156,7 @@ dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-
 
         </div>
 
-      </div>
+      </motion.div>
 
 
 
